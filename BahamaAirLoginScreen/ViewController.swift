@@ -90,7 +90,10 @@ class ViewController: UIViewController {
         self.loginButton.center.y -= 30.0
         self.loginButton.alpha = 1.0
     }, completion: nil)
-    
+    /*
+     Change the duration to 3.0 and the damping to 0.1. This is just to let you observe the effect of your changes in slow motion instead of at normal speed.
+     Build and run your project again; note how the opacity of the button changes as it moves up. This is because the spring behavior affects all properties you animate; in your case, this affects both the vertical position of the button and its alpha value.
+     */
     UIView.animate(withDuration: 0.5, delay: 0.5, options: [.curveEaseOut ], animations: {
         self.cloud1.alpha = 1.0
     }){ isThis  in    }
@@ -110,6 +113,16 @@ class ViewController: UIViewController {
   
   @IBAction func login() {
     view.endEditing(true)
+    UIView.animate(withDuration: 1.5, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.0, options: [], animations: {
+        self.loginButton.bounds.size.width += 80.0
+    }){ (yes) in  }
+    UIView.animate(withDuration: 0.33, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: [], animations: {
+        self.loginButton.center.y += 60.0
+        self.loginButton.backgroundColor = UIColor(red: 0.85, green: 0.93, blue: 0.45, alpha: 1.0)
+        self.spinner.center = CGPoint(x: 40.0, y: self.loginButton.frame.size.height/2)
+        self.spinner.alpha = 1.0
+    }){ (yes) in  }
+    
   }
   
   // MARK: UITextFieldDelegate
