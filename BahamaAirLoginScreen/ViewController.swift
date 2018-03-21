@@ -56,10 +56,30 @@ class ViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    heading.center.x -= view.bounds.width
+    username.center.x -= view.bounds.width
+    password.center.x -= view.bounds.width
+    
   }
+    
+    
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
+    UIView.animate(withDuration: 0.5) { //0.5
+        self.heading.center.x += self.view.bounds.width
+        
+    }
+    UIView.animate(withDuration: 0.5, delay: 0.3, options: .curveEaseOut, animations: {
+        self.username.center.x += self.view.bounds.width
+    }){ isThis  in    }
+    
+    //options: Lets you customize a number of aspects about your animation. You’ll learn more about this parameter later on, but for now you can pass an empty array [] to mean “no special options”.
+
+    UIView.animate(withDuration: 0.5, delay: 0.4, options: [.curveEaseOut ], animations: {
+        self.password.center.x += self.view.bounds.width
+    }){ isThis  in    }
+    // Position and Size: bounds, frame, center
   }
   
   // MARK: further methods
