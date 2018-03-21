@@ -59,7 +59,12 @@ class ViewController: UIViewController {
     heading.center.x -= view.bounds.width
     username.center.x -= view.bounds.width
     password.center.x -= view.bounds.width
-    
+    cloud1.alpha = 0.0
+    cloud2.alpha = 0.0
+    cloud3.alpha = 0.0
+    cloud4.alpha = 0.0
+    loginButton.center.y += 30.0
+    loginButton.alpha = 0.0
   }
     
     
@@ -80,6 +85,25 @@ class ViewController: UIViewController {
         self.password.center.x += self.view.bounds.width
     }){ isThis  in    }
     // Position and Size: bounds, frame, center
+    
+    UIView.animate(withDuration: 0.5, delay: 0.5, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: [], animations: {
+        self.loginButton.center.y -= 30.0
+        self.loginButton.alpha = 1.0
+    }, completion: nil)
+    
+    UIView.animate(withDuration: 0.5, delay: 0.5, options: [.curveEaseOut ], animations: {
+        self.cloud1.alpha = 1.0
+    }){ isThis  in    }
+    UIView.animate(withDuration: 0.5, delay: 0.7, options: [.curveEaseOut ], animations: {
+        self.cloud2.alpha = 1.0
+    }){ isThis  in    }
+    UIView.animate(withDuration: 0.5, delay: 0.9, options: [.curveEaseOut ], animations: {
+        self.cloud3.alpha = 1.0
+    }){ isThis  in    }
+    UIView.animate(withDuration: 0.5, delay: 1.1, options: [.curveEaseOut ], animations: {
+        self.cloud4.alpha = 1.0
+    }){ isThis  in    }
+   
   }
   
   // MARK: further methods
