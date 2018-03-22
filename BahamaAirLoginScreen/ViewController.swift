@@ -52,8 +52,10 @@ class ViewController: UIViewController {
     label.textColor = UIColor(red: 0.89, green: 0.38, blue: 0.0, alpha: 1.0)
     label.textAlignment = .center
     status.addSubview(label)
+    statusPosition = status.center
   }
   
+    
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     heading.center.x -= view.bounds.width
@@ -114,13 +116,47 @@ class ViewController: UIViewController {
    
   }
   
+    // MARK: Funcs
+    
+    func showMessage(index: Int){
+        label.text = messages[index]
+        //.transitionCurlDown
+        UIView.transition(with: status, duration: 0.33, options: [.curveEaseOut, .transitionFlipFromBottom], animations: {
+            self.status.isHidden = false
+        }) { _ in  delay(2.0, completion: {
+            if index < self.messages.count - 1{
+                self.removeMessage(index: index)
+            }
+            else{
+                
+            }
+        })}
+    }
+    
+    
+    
+    func removeMessage(index: Int){
+        UIView.animate(withDuration: 0.33, delay: 0.0, options: [], animations: {
+            self.status.center.x += self.view.frame.size.width
+        }) { (_) in
+            self.status.isHidden = true
+            self.status.center = self.statusPosition
+            self.showMessage(index: index+1)
+        }
+    }
+    
+    
+    
+    
   // MARK: further methods
   
   @IBAction func login() {
     view.endEditing(true)
     UIView.animate(withDuration: 1.5, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.0, options: [], animations: {
         self.loginButton.bounds.size.width += 80.0
-    }){ (yes) in  }
+    }){ (yes) in
+        self.showMessage(index: 0)
+    }
     UIView.animate(withDuration: 0.33, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: [], animations: {
         self.loginButton.center.y += 60.0
         self.loginButton.backgroundColor = UIColor(red: 0.85, green: 0.93, blue: 0.45, alpha: 1.0)
@@ -129,6 +165,12 @@ class ViewController: UIViewController {
     }){ (yes) in  }
     
   }
+    
+    
+    
+    
+    
+    
   
   // MARK: UITextFieldDelegate
   

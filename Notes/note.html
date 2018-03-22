@@ -3,7 +3,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Anima Document</title>
+
+<style>
+    td{
+        padding: 1rem 0.5rem
+    }
+
+
+</style>
+
+
 </head>
 <body>
     
@@ -40,6 +50,81 @@
             </tr>
 
 
+        </table>
+
+        <hr>
+        <hr>
+    </div>
+
+    <div>
+
+        <h3>Skills</h3>
+        <table>
+            <tr>
+                <th>Note: The completion closure above has a single parameter for completed. Because you don’t care whether it finished or not, <br>Swift allows you to skip binding the parameter by putting “_” in its place.</th>
+                <td>Note: Some of your animations seem to run really quickly,<br> don’t they? Sometimes it’s tricky to ensure the animation happens at just the right location, and in the correct sequence. Or maybe you just want things to happen slower so you can appreciate the effect!<br>
+                    To slow down all animations in your app without changing your code,<br> select Debug/Toggle Slow Animations in Frontmost App from the iPhone Simulator menu. Now tap the Login button in your app and enjoy the animations and transitions in vivid slow motion!</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>// A delay function
+                    func delay(_ seconds: Double, completion: @escaping ()->Void) {
+                      DispatchQueue.main.asyncAfter(deadline: .now() + seconds, execute: completion)
+                    }</th>
+                <td>Note: delay(_:completion:) is a convenience function that runs a block of code after an elapsed delay; it’s defined at the top of ViewController.swift.<br> Here you’re using it to simulate the usual network access delay.</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>@escaping</th>
+                <td>在swift2中，你可能遇到过@noescape属性，你有没有花一点时间去理解它的意思？<br>在swift3.0中，@noescape已经被移除了</td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <th>逃逸闭包（Escaping Closure）
+                   
+                    
+                    
+                    
+                </th>
+                <td> 首先你需要理解什么是逃逸闭包。它的定义非常简单而且易于理解。<br>如果一个闭包被作为一个参数传递给一个函数，并且在函数return之后才被唤起执行，<br>那么这个闭包是逃逸闭包。并且这个闭包的参数是可以“逃出”这个函数体外的。</td>
+                <td>If a closure is passed as an argument to a function and it is invoked after the function returns,<br> the closure is escaping.</td>
+                <td>编译器立即告诉我们@noescape在swift3中是默认的并且建议移除@noescape。<br>事实上，@noescape在swift3中已经被废弃，你以后都不会用到它了。
+                    
+                    </td>
+
+                    <td>你可能注意到了，这个@escaping属性写在参数类型的前面而不是参数名称的前面。这是swift3里一个新的点。</td>
+
+
+                    
+            </tr>
+            <tr>
+                <th>@escaping的含义</th>
+                <td>
+                    
+                    这个提醒我们去理解@escaping属性的含义。因为在swift3中闭包默认是不可逃逸的，逃逸闭包需要像这样被标记。@escaping属性让我们可以那样做。
+                </td>
+                <td>这里几点关于创建默认不可逃逸闭包的好处： 最明显的好处就是编译器优化你的代码的性能和能力。如果编译器知道这个闭包是不可逃逸的，它可以关注内存管理的关键细节。
+                    
+                   
+  </td>
+                <td> 而且你可以在不可逃逸闭包里放心的使用self关键字，因为这个闭包总是在函数return之前执行，你不需要去使用一个弱引用去引用self.这对你而言是一个非常nice的功能。</td>
+                <td><a href="https://www.jianshu.com/p/73bd0633ab00">swift3.0中@escaping 和 @noescape 的含义</a></td>
+                <td><a href="https://cocoacasts.com/what-do-escaping-and-noescape-mean-in-swift-3">What Do @escaping And @noescape Mean In Swift 3</a></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
         </table>
     </div>
 </body>
