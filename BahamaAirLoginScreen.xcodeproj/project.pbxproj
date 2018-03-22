@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		231D8B1520637EAA0006616F /* TryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231D8B1420637EAA0006616F /* TryViewController.swift */; };
 		9C4319691A0C32D80085829B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4319681A0C32D80085829B /* AppDelegate.swift */; };
 		9C43196B1A0C32D80085829B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C43196A1A0C32D80085829B /* ViewController.swift */; };
 		9C43196E1A0C32D90085829B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C43196C1A0C32D90085829B /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		231D8B1420637EAA0006616F /* TryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryViewController.swift; sourceTree = "<group>"; };
 		9C4319631A0C32D80085829B /* BahamaAirLoginScreen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BahamaAirLoginScreen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C4319671A0C32D80085829B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C4319681A0C32D80085829B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +37,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		231D8B1020637E390006616F /* TryScene */ = {
+			isa = PBXGroup;
+			children = (
+				231D8B1420637EAA0006616F /* TryViewController.swift */,
+			);
+			path = TryScene;
+			sourceTree = "<group>";
+		};
 		9C43195A1A0C32D80085829B = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +64,7 @@
 		9C4319651A0C32D80085829B /* BahamaAirLoginScreen */ = {
 			isa = PBXGroup;
 			children = (
+				231D8B1020637E390006616F /* TryScene */,
 				9C4319681A0C32D80085829B /* AppDelegate.swift */,
 				9C43196A1A0C32D80085829B /* ViewController.swift */,
 				9C43196C1A0C32D90085829B /* Main.storyboard */,
@@ -104,7 +115,8 @@
 				TargetAttributes = {
 					9C4319621A0C32D80085829B = {
 						CreatedOnToolsVersion = 6.1;
-						LastSwiftMigration = 0900;
+						DevelopmentTeam = 9ZPF2ERCW9;
+						LastSwiftMigration = 0910;
 					};
 				};
 			};
@@ -144,6 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				231D8B1520637EAA0006616F /* TryViewController.swift in Sources */,
 				9C43196B1A0C32D80085829B /* ViewController.swift in Sources */,
 				9C4319691A0C32D80085829B /* AppDelegate.swift in Sources */,
 			);
@@ -273,10 +286,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 9ZPF2ERCW9;
 				INFOPLIST_FILE = BahamaAirLoginScreen/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
@@ -286,6 +302,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 9ZPF2ERCW9;
 				INFOPLIST_FILE = BahamaAirLoginScreen/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.$(PRODUCT_NAME:rfc1034identifier)";

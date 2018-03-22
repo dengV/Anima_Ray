@@ -75,17 +75,22 @@ class ViewController: UIViewController {
         self.heading.center.x += self.view.bounds.width
         
     }
-    UIView.animate(withDuration: 0.5, delay: 0.3, options: .curveEaseOut, animations: {
-        self.username.center.x += self.view.bounds.width
-    }){ isThis  in    }
+    UIView.animate(withDuration: 0.5 , delay:  0.3, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.0, options:  .curveEaseOut, animations: {
+       self.username.center.x += self.view.bounds.width
+    }, completion: nil)
+    // Duration:  0.5
+    
+    UIView.animate(withDuration: 0.5 , delay:  0.4, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.0, options:  .curveEaseOut, animations: {
+        self.password.center.x += self.view.bounds.width
+    }, completion: nil)
     
     //options: Lets you customize a number of aspects about your animation. You’ll learn more about this parameter later on, but for now you can pass an empty array [] to mean “no special options”.
-
+/*
     UIView.animate(withDuration: 0.5, delay: 0.4, options: [.curveEaseOut ], animations: {
         self.password.center.x += self.view.bounds.width
     }){ isThis  in    }
     // Position and Size: bounds, frame, center
-    
+    */
     UIView.animate(withDuration: 0.5, delay: 0.5, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: [], animations: {
         self.loginButton.center.y -= 30.0
         self.loginButton.alpha = 1.0

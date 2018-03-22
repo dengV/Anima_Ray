@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="FD1-tm-lbi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FD1-tm-lbi">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -18,7 +19,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Item-->
+        <!--Bahama Air Login-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="BahamaAirLoginScreen" customModuleProvider="target" sceneMemberID="viewController">
@@ -26,46 +27,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-sunny" id="w7J-SM-Dk0">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg-sunny" translatesAutoresizingMaskIntoConstraints="NO" id="w7J-SM-Dk0">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-sunny-cloud-1" id="Oqu-co-Y0s">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg-sunny-cloud-1" translatesAutoresizingMaskIntoConstraints="NO" id="Oqu-co-Y0s">
                                 <rect key="frame" x="-120" y="131" width="159" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-sunny-cloud-2" id="Ptl-Dv-gsb">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg-sunny-cloud-2" translatesAutoresizingMaskIntoConstraints="NO" id="Ptl-Dv-gsb">
                                 <rect key="frame" x="217" y="155" width="158" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-sunny-cloud-3" id="90G-lc-cQA">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg-sunny-cloud-3" translatesAutoresizingMaskIntoConstraints="NO" id="90G-lc-cQA">
                                 <rect key="frame" x="252" y="370" width="74" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-sunny-cloud-4" id="9tV-Kz-0A1">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg-sunny-cloud-4" translatesAutoresizingMaskIntoConstraints="NO" id="9tV-Kz-0A1">
                                 <rect key="frame" x="20" y="398" width="115" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bahama Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mEV-bG-x0j">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bahama Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEV-bG-x0j">
                                 <rect key="frame" x="81" y="87" width="214" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="28"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" id="MAN-Rj-j7W">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MAN-Rj-j7W">
                                 <rect key="frame" x="46" y="149" width="282" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet" keyboardAppearance="light" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" id="9gk-hf-wuJ">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9gk-hf-wuJ">
                                 <rect key="frame" x="46" y="194" width="282" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet" keyboardAppearance="light" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bit-Al-8Lg">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bit-Al-8Lg">
                                 <rect key="frame" x="70" y="250" width="234" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.62745098040000002" green="0.83921568629999999" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -80,8 +81,9 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="re8-yg-9iz"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="S6S-X8-dhK"/>
+                    <navigationItem key="navigationItem" title="Bahama Air Login" id="m6q-ce-R4C"/>
                     <connections>
                         <outlet property="cloud1" destination="Oqu-co-Y0s" id="XJJ-cu-wjC"/>
                         <outlet property="cloud2" destination="Ptl-Dv-gsb" id="CbK-v8-Qca"/>
@@ -95,7 +97,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="366" y="-152"/>
+            <point key="canvasLocation" x="1681.6000000000001" y="-137.63118440779616"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="umZ-6J-piB">
@@ -103,16 +105,115 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="FD1-tm-lbi" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0g4-JB-Emd">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="9cH-0s-3nt"/>
+                        <segue destination="0Rs-K0-vPi" kind="relationship" relationship="viewControllers" id="TCC-iM-sRa"/>
+                        <segue destination="tKT-lW-ynL" kind="relationship" relationship="viewControllers" id="kOs-cx-ctc"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ASJ-RY-Y8U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-226" y="366"/>
+            <point key="canvasLocation" x="-361.60000000000002" y="329.2353823088456"/>
+        </scene>
+        <!--Chapter 3-->
+        <scene sceneID="Tcb-bF-ZHn">
+            <objects>
+                <viewController id="FcI-30-9zm" customClass="TryViewController" customModule="BahamaAirLoginScreen" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7I8-sf-x73">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="74R-mX-Zka">
+                                <rect key="frame" x="0.0" y="574" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Qj0-Cs-9f7"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="Remove" id="EZA-7b-zWm">
+                                        <connections>
+                                            <action selector="removeAnimation:" destination="FcI-30-9zm" id="Osg-Fy-vu5"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="iSO-9k-zXv"/>
+                                    <barButtonItem title="Reset" id="Uvp-Ge-fw6">
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="resetAnimation:" destination="FcI-30-9zm" id="mvU-xK-y5R"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="fvn-gc-BP7"/>
+                                    <barButtonItem title="Hide" id="2vl-Pu-Xah">
+                                        <color key="tintColor" red="1" green="0.39262579730000002" blue="0.285958449" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <connections>
+                                            <action selector="hideAnimation:" destination="FcI-30-9zm" id="dbf-rS-UF1"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="CzZ-MM-DlH"/>
+                                    <barButtonItem title="Replace" id="NT4-5o-cVS">
+                                        <connections>
+                                            <action selector="replaceAnimation:" destination="FcI-30-9zm" id="zEU-pn-b6r"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="74R-mX-Zka" firstAttribute="bottom" secondItem="GuE-rL-d4V" secondAttribute="bottom" id="3Lt-Fh-WiV"/>
+                            <constraint firstItem="74R-mX-Zka" firstAttribute="leading" secondItem="GuE-rL-d4V" secondAttribute="leading" id="WLU-Lu-tQw"/>
+                            <constraint firstItem="74R-mX-Zka" firstAttribute="trailing" secondItem="GuE-rL-d4V" secondAttribute="trailing" id="YZd-Xv-TQQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GuE-rL-d4V"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Chapter 3" id="5Yc-2e-gxj"/>
+                    <connections>
+                        <outlet property="toolbar" destination="74R-mX-Zka" id="l57-F0-AfW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ntm-NC-ZeF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1713.6000000000001" y="666.56671664167925"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mTD-j9-Ceo">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0Rs-K0-vPi" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="more" id="S6S-X8-dhK"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="leU-Qi-AQD">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="aGV-91-55a"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X51-iG-gM9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="585.60000000000002" y="-136.73163418290855"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="39I-68-R3p">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tKT-lW-ynL" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="featured" id="aV0-Fh-zZL"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Zht-Oj-VTO">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="FcI-30-9zm" kind="relationship" relationship="rootViewController" id="cgr-cB-L7q"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MoT-lo-7bQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="710.40000000000009" y="641.37931034482767"/>
         </scene>
     </scenes>
     <resources>
