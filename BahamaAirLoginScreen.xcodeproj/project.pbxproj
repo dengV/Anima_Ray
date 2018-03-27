@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		231D8B1520637EAA0006616F /* TryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231D8B1420637EAA0006616F /* TryViewController.swift */; };
+		238BE6912069D796002ECF8A /* FlightData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238BE68E2069D796002ECF8A /* FlightData.swift */; };
+		238BE6922069D796002ECF8A /* SnowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238BE68F2069D796002ECF8A /* SnowView.swift */; };
+		238BE6932069D796002ECF8A /* ChapterFourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238BE6902069D796002ECF8A /* ChapterFourViewController.swift */; };
 		9C4319691A0C32D80085829B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4319681A0C32D80085829B /* AppDelegate.swift */; };
 		9C43196B1A0C32D80085829B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C43196A1A0C32D80085829B /* ViewController.swift */; };
 		9C43196E1A0C32D90085829B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C43196C1A0C32D90085829B /* Main.storyboard */; };
@@ -17,6 +20,9 @@
 
 /* Begin PBXFileReference section */
 		231D8B1420637EAA0006616F /* TryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryViewController.swift; sourceTree = "<group>"; };
+		238BE68E2069D796002ECF8A /* FlightData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightData.swift; sourceTree = "<group>"; };
+		238BE68F2069D796002ECF8A /* SnowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnowView.swift; sourceTree = "<group>"; };
+		238BE6902069D796002ECF8A /* ChapterFourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterFourViewController.swift; sourceTree = "<group>"; };
 		9C4319631A0C32D80085829B /* BahamaAirLoginScreen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BahamaAirLoginScreen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C4319671A0C32D80085829B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C4319681A0C32D80085829B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +51,24 @@
 			path = TryScene;
 			sourceTree = "<group>";
 		};
+		238BE68C2069D796002ECF8A /* FourthScene */ = {
+			isa = PBXGroup;
+			children = (
+				238BE68D2069D796002ECF8A /* SubClass */,
+				238BE6902069D796002ECF8A /* ChapterFourViewController.swift */,
+			);
+			path = FourthScene;
+			sourceTree = "<group>";
+		};
+		238BE68D2069D796002ECF8A /* SubClass */ = {
+			isa = PBXGroup;
+			children = (
+				238BE68E2069D796002ECF8A /* FlightData.swift */,
+				238BE68F2069D796002ECF8A /* SnowView.swift */,
+			);
+			path = SubClass;
+			sourceTree = "<group>";
+		};
 		9C43195A1A0C32D80085829B = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +88,7 @@
 		9C4319651A0C32D80085829B /* BahamaAirLoginScreen */ = {
 			isa = PBXGroup;
 			children = (
+				238BE68C2069D796002ECF8A /* FourthScene */,
 				231D8B1020637E390006616F /* TryScene */,
 				9C4319681A0C32D80085829B /* AppDelegate.swift */,
 				9C43196A1A0C32D80085829B /* ViewController.swift */,
@@ -158,7 +183,10 @@
 			files = (
 				231D8B1520637EAA0006616F /* TryViewController.swift in Sources */,
 				9C43196B1A0C32D80085829B /* ViewController.swift in Sources */,
+				238BE6932069D796002ECF8A /* ChapterFourViewController.swift in Sources */,
+				238BE6922069D796002ECF8A /* SnowView.swift in Sources */,
 				9C4319691A0C32D80085829B /* AppDelegate.swift in Sources */,
+				238BE6912069D796002ECF8A /* FlightData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

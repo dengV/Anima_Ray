@@ -28,9 +28,11 @@ class ViewController: UIViewController {
   let messages = ["Connecting ...", "Authorizing ...", "Sending credentials ...", "Failed"]
   
   var statusPosition = CGPoint.zero
-  
+    
+  var cancelCloud = false
+    
   // MARK: view controller methods
-  
+    
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -114,8 +116,20 @@ class ViewController: UIViewController {
         self.cloud4.alpha = 1.0
     }){ isThis  in    }
    
+    animateCloud(cloud: cloud1)
+    animateCloud(cloud: cloud2)
+    animateCloud(cloud: cloud3)
+    animateCloud(cloud: cloud4)
   }
   
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.cancelCloud = true
+    }
+    
+    
+    
     // MARK: Funcs
     
     func showMessage(index: Int){
@@ -167,6 +181,25 @@ class ViewController: UIViewController {
     
     
     
+    func animateCloud(cloud: UIImageView){
+        let kScreenWidth = view.frame.size.width
+        let cloudSpeed = 60.0/kScreenWidth    // view , 计算出 一屏的 宽度
+        // speed 的 倒数
+        
+        let duration = (kScreenWidth - cloud.frame.origin.x) * cloudSpeed
+        UIView.animate(withDuration: TimeInterval(duration), delay: 0.05, options: .curveLinear, animations: {
+            cloud.frame.origin.x = kScreenWidth
+            print("Cloud is Swing")
+            
+        }) { (isThis) in
+            cloud.frame.origin.x -= (kScreenWidth + cloud.frame.size.width)
+            
+            if(!self.cancelCloud){
+                self.animateCloud(cloud: cloud)
+            }
+        }
+    }
+    
     
     
   // MARK: further methods
@@ -186,6 +219,12 @@ class ViewController: UIViewController {
     }){ (yes) in  }
     
   }
+    
+    
+    
+    
+    
+    
     
     
     
