@@ -1,24 +1,4 @@
-/*
-* Copyright (c) 2014-present Razeware LLC
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, and to permit persons to whom the Software is
-* furnished to do so, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included in
-* all copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-* THE SOFTWARE.
-*/
+
 
 import UIKit
 import QuartzCore
@@ -68,8 +48,9 @@ class ChapterFourViewController: UIViewController {
   
   //MARK: custom methods
   
-  func changeFlight(to data: FlightData) {
-    
+    func changeFlight(to data:FlightData, animated:Bool = false){
+/*  Above, you supply a default value of false for the new animated parameter so that
+    existing calls to this method work as they did before, with no animation.     */
     // populate the UI with the next flight's data
     summary.text = data.summary
     flightNr.text = data.flightNr
@@ -77,13 +58,34 @@ class ChapterFourViewController: UIViewController {
     departingFrom.text = data.departingFrom
     arrivingTo.text = data.arrivingTo
     flightStatus.text = data.flightStatus
-    bgImageView.image = UIImage(named: data.weatherImageName)
-    snowView.isHidden = !data.showWeatherEffects
+        
+        if animated {
+            fade(imageView: bgImageView, toImage: UIImage(named: data.weatherImageName)!, showEffects: data.showWeatherEffects)
+        }
+        else{
+            bgImageView.image = UIImage(named: data.weatherImageName)
+            snowView.isHidden = !data.showWeatherEffects
+        }
+    
     
     // schedule next flight
     delay(seconds: 3.0) {
-      self.changeFlight(to: data.isTakingOff ? parisToRome : londonToParis)
+     // self.changeFlight(to: data.isTakingOff ? parisToRome : londonToParis)
+        self.changeFlight(to: data.isTakingOff ? parisToRome : londonToParis, animated: true)
     }
   }
 
+    
+    //MARK: - funcs
+    
+    func fade(imageView: UIImageView, toImage: UIImage , showEffects: Bool){
+        UIView.transition(with: imageView, duration: 1.0, options: .transitionCrossDissolve, animations: {
+            imageView.image = toImage
+        }) { _ in        }
+    
+        UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseOut, animations: {
+            self.snowView.alpha = showEffects ? 1.0 : 0.0
+        }) { _ in        }
+    
+    }
 }
