@@ -23,7 +23,7 @@ class ViewController: UIViewController {
   // MARK: further UI
   
   let spinner = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-  let status = UIImageView(image: UIImage(named: "banner"))
+  let statusImageView = UIImageView(image: UIImage(named: "banner"))
   let label = UILabel()
   let messages = ["Connecting ...", "Authorizing ...", "Sending credentials ...", "Failed"]
   
@@ -43,16 +43,16 @@ class ViewController: UIViewController {
     spinner.alpha = 0.0
     loginButton.addSubview(spinner)
     
-    status.isHidden = true
-    status.center = loginButton.center
-    view.addSubview(status)
+    statusImageView.isHidden = true
+    statusImageView.center = loginButton.center
+    view.addSubview(statusImageView)
     
-    label.frame = CGRect(x: 0.0, y: 0.0, width: status.frame.size.width, height: status.frame.size.height)
+    label.frame = CGRect(x: 0.0, y: 0.0, width: statusImageView.frame.size.width, height: statusImageView.frame.size.height)
     label.font = UIFont(name: "HelveticaNeue", size: 18.0)
     label.textColor = UIColor(red: 0.89, green: 0.38, blue: 0.0, alpha: 1.0)
     label.textAlignment = .center
-    status.addSubview(label)
-    statusPosition = status.center
+    statusImageView.addSubview(label)
+    statusPosition = statusImageView.center
   }
   
     
@@ -121,14 +121,14 @@ class ViewController: UIViewController {
     func showMessage(index: Int){
         label.text = messages[index]
         //.transitionCurlDown
-        UIView.transition(with: status, duration: 0.33, options: [.curveEaseOut, .transitionFlipFromBottom], animations: {
-            self.status.isHidden = false
+        UIView.transition(with: statusImageView, duration: 0.33, options: [.curveEaseOut, .transitionFlipFromBottom], animations: {
+            self.statusImageView.isHidden = false
         }) { _ in  delay(2.0, completion: {
             if index < self.messages.count - 1{
                 self.removeMessage(index: index)
             }
             else{
-                
+                self.resetForm()
             }
         })}
     }
@@ -137,13 +137,34 @@ class ViewController: UIViewController {
     
     func removeMessage(index: Int){
         UIView.animate(withDuration: 0.33, delay: 0.0, options: [], animations: {
-            self.status.center.x += self.view.frame.size.width
+            self.statusImageView.center.x += self.view.frame.size.width
         }) { (_) in
-            self.status.isHidden = true
-            self.status.center = self.statusPosition
+            self.statusImageView.isHidden = true
+            self.statusImageView.center = self.statusPosition
             self.showMessage(index: index+1)
         }
     }
+    
+// MARK:- Challenge
+    func resetForm(){
+        UIView.transition(with: statusImageView, duration: 0.2, options: .transitionFlipFromTop, animations: {
+            self.statusImageView.isHidden = true
+            self.statusImageView.center = self.statusPosition
+        }) { (isIt) in }
+        
+        UIView.animate(withDuration: 0.3, delay: 0.2, options: [], animations: {
+            
+            self.loginButton.backgroundColor = UIColor(red: 0.63, green: 0.84, blue: 0.35, alpha: 1.0)
+            self.loginButton.center.y -= 60.0
+          //  self.loginButton.frame.size.width -= 80.0
+            self.loginButton.bounds.size.width -= 80.0
+         //   self.loginButton.frame.origin.y -= 60.0
+            self.spinner.frame.origin = CGPoint(x: -20, y: 16)
+            self.spinner.alpha = 0.0
+        }) { (isOK) in        }
+        
+    }
+    
     
     
     
