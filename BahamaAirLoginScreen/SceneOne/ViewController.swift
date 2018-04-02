@@ -144,7 +144,7 @@ class ViewController: UIViewController {
             else{
                 self.resetForm()
             }
-        })}
+        })}// 0.33 , delay   2.0
     }
     
     
@@ -164,19 +164,33 @@ class ViewController: UIViewController {
         UIView.transition(with: statusImageView, duration: 0.2, options: .transitionFlipFromTop, animations: {
             self.statusImageView.isHidden = true
             self.statusImageView.center = self.statusPosition
+            
         }) { (isIt) in }
         
-        UIView.animate(withDuration: 0.3, delay: 0.2, options: [], animations: {
+    /*    UIView.animate(withDuration: 0.3, delay: 0.2, options: [], animations: {
             
             self.loginButton.backgroundColor = UIColor(red: 0.63, green: 0.84, blue: 0.35, alpha: 1.0)
-            self.loginButton.center.y -= 60.0
-          //  self.loginButton.frame.size.width -= 80.0
+            
+           // self.loginButton.frame.size.width -= 80.0
             self.loginButton.bounds.size.width -= 80.0
-         //   self.loginButton.frame.origin.y -= 60.0
+           // self.loginButton.center.y -= 60.0
+            self.loginButton.frame.origin.y -= 60.0
             self.spinner.frame.origin = CGPoint(x: -20, y: 16)
             self.spinner.alpha = 0.0
-        }) { (isOK) in        }
-        
+        }) { (isOK) in        }*/
+        UIView.animate(withDuration: 1.5, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.0, options: [], animations: {
+            self.loginButton.bounds.size.width -= 80.0
+            self.view.layoutIfNeeded()
+
+        }){ (yes) in }
+        UIView.animate(withDuration: 0.33, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: [], animations: {
+            self.loginButton.center.y -= 60.0
+            self.loginButton.backgroundColor = UIColor(red: 0.63, green: 0.84, blue: 0.35, alpha: 1.0)
+            self.spinner.center = CGPoint(x: -20, y: -16)
+            self.spinner.alpha = 0.0
+            self.view.layoutIfNeeded()
+
+        }){ (yes) in  }
     }
     
     

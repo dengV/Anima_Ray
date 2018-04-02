@@ -69,7 +69,12 @@ You’ll take care of those next with a faux-3D transition.
 self.changeFlight(to: data.isTakingOff ?
 parisToRome : londonToParis, animated: true)
 <br>
-Note: If you want to have some fun, you can try also some of the transition effects from the previous chapter. Keep in mind that transitions
+
+
+
+
+
+> Note: If you want to have some fun, you can try also some of the transition effects from the previous chapter. Keep in mind that transitions
 like .transitionFlipFromLeft are simply too distracting for the current
 project. .transitionCrossDissolve is a subtle “background” effect which only enhances the animations, which will happen in the foreground.
 

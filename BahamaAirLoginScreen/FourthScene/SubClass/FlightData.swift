@@ -31,8 +31,8 @@ let londonToParis = FlightData(
   arrivingTo: "CDG",
   weatherImageName: "bg-snowy",
   showWeatherEffects: true,
-  isTakingOff: true,
-  flightStatus: "Boarding")
+  isTakingOff: false,
+  flightStatus: "Delayed")
 
 
 let parisToRome = FlightData(
@@ -43,6 +43,6 @@ let parisToRome = FlightData(
   arrivingTo: "FCO",
   weatherImageName: "bg-sunny",
   showWeatherEffects: false,
-  isTakingOff: false,
-  flightStatus: "Delayed")
+  isTakingOff: true,
+  flightStatus: "Boarding")
 
