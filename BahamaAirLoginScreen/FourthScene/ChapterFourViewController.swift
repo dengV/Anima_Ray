@@ -66,8 +66,8 @@ class ChapterFourViewController: UIViewController {
         if animated {
             fade(imageView: bgImageView, toImage: UIImage(named: data.weatherImageName)!, showEffects: data.showWeatherEffects , data_dng: data  )
             let direction: AnimationDirection = data.isTakingOff ? .positive : .negative
-            cubeTransition(label: flightNr, text: data.flightNr, direction: direction)
-            cubeTransition(label: gateNr, text: data.gateNr, direction: direction)
+            cubeTransition(label: flightNr, textNew: data.flightNr, direction: direction)
+            cubeTransition(label: gateNr, textNew: data.gateNr, direction: direction)
         }
         else{
             bgImageView.image = UIImage(named: data.weatherImageName)
@@ -106,9 +106,9 @@ class ChapterFourViewController: UIViewController {
     
     
     
-    func cubeTransition(label: UILabel, text: String, direction: AnimationDirection){
+    func cubeTransition(label: UILabel, textNew: String, direction: AnimationDirection){
         let auxLable = UILabel(frame: label.frame)
-        auxLable.text = text
+        auxLable.text = textNew
         auxLable.font = label.font
         auxLable.textAlignment = label.textAlignment
         auxLable.textColor = label.textColor
@@ -123,8 +123,46 @@ class ChapterFourViewController: UIViewController {
         }) { _ in
             label.text = auxLable.text
             label.transform = .identity
-            auxLable.removeFromSuperview()
+            auxLable.removeFromSuperview() // 不停的动画，不停地创建， 代码明显 可以优化
         }
     }
+/*
+     CGAffineTransformIdentity does reset a view or layer to its original, untransformed state, and thus cannot be redefined.
+     But if you want your "personal" reset transform, e.g. with a different scale, why don't you simply define it, e.g. by using CGAffineTransform myCGAffineTransformIdentity = CGAffineTransform CGAffineTransformMakeScale (sx,sy);, and apply it to your views?
+     */
+    
+    
+    func moveLabel(label: UILabel, text: String, offset: CGPoint){
+        // auxiliary
+        let auxLabel = UILabel(frame: label.frame)
+        auxLabel.text = text
+        auxLabel.font = label.font
+        auxLabel.textAlignment = label.textAlignment
+        auxLabel.textColor = label.textColor
+        auxLabel.backgroundColor = .clear
+        
+        auxLabel.transform = CGAffineTransform(translationX: offset.x, y: offset.y)
+        auxLabel.alpha = 0
+        view.addSubview(auxLabel)
+    }
+/*
+     Declaration
+     init(translationX tx: CGFloat,
+     y ty: CGFloat)
+     Parameters
+     tx
+     The value by which to move the x-axis of the coordinate system.
+     
+     ty
+     The value by which to move the y-axis of the coordinate system.
+     
+     Return Value
+     A new affine transform matrix.
+     
+     Discussion
+     This function creates a CGAffineTransform structure. which you can use (and reuse, if you want) to move a coordinate system. The matrix takes the following form:
+     
+
+     */
     
 }
