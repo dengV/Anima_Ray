@@ -32,7 +32,8 @@ class ChapterFourViewController: UIViewController {
   @IBOutlet var flightStatus: UILabel!
   @IBOutlet var statusBanner: UIImageView!
   
-  var snowView: SnowView!
+    var snowView: SnowView!
+    var mockStatusBanner: UILabel?
   
   //MARK: view controller methods
   
@@ -56,35 +57,40 @@ class ChapterFourViewController: UIViewController {
   
   //MARK: custom methods
   
-    func changeFlight(to data:FlightData, animated:Bool = false){
+    func changeFlight(to dataDestination:FlightData, animated:Bool = false){
 /*  Above, you supply a default value of false for the new animated parameter so that
     existing calls to this method work as they did before, with no animation.     */
     // populate the UI with the next flight's data
-    summary.text = data.summary
+    summary.text = dataDestination.summary
     
         
         if animated {
-            fade(imageView: bgImageView, toImage: UIImage(named: data.weatherImageName)!, showEffects: data.showWeatherEffects , data_dng: data  )
-            let direction: AnimationDirection = data.isTakingOff ? .positive : .negative
-            cubeTransition(label: flightNr, textNew: data.flightNr, direction: direction)
-            cubeTransition(label: gateNr, textNew: data.gateNr, direction: direction)
+            fade(imageView: bgImageView, toImage: UIImage(named: dataDestination.weatherImageName)!, showEffects: dataDestination.showWeatherEffects , data_dng: dataDestination  )
+            let direction: AnimationDirection = dataDestination.isTakingOff ? .positive : .negative
+            cubeTransition(label: flightNr, textNew: dataDestination.flightNr, direction: direction)
+            cubeTransition(label: gateNr, textNew: dataDestination.gateNr, direction: direction)
+            boardingAnimation(statusLabel: flightStatus, newText: dataDestination.flightStatus, direction: direction)
+            let offsetDeparting = CGPoint(x:  CGFloat( direction.rawValue * 80), y: 0.0)
+            moveLabel(label: departingFrom, text: dataDestination.departingFrom, offset: offsetDeparting)
+            let offsetArriving = CGPoint(x: 0.0, y: CGFloat(direction.rawValue * 50))
+            moveLabel(label: arrivingTo, text: dataDestination.arrivingTo, offset: offsetArriving)
         }
         else{
-            bgImageView.image = UIImage(named: data.weatherImageName)
-            snowView.isHidden = !data.showWeatherEffects
+            bgImageView.image = UIImage(named: dataDestination.weatherImageName)
+            snowView.isHidden = !dataDestination.showWeatherEffects
             
-            flightNr.text = data.flightNr
-            gateNr.text = data.gateNr
-            departingFrom.text = data.departingFrom
-            arrivingTo.text = data.arrivingTo
-            flightStatus.text = data.flightStatus
+            flightNr.text = dataDestination.flightNr
+            gateNr.text = dataDestination.gateNr
+            departingFrom.text = dataDestination.departingFrom
+            arrivingTo.text = dataDestination.arrivingTo
+            flightStatus.text = dataDestination.flightStatus
         }
     
     
     // schedule next flight
     delay(seconds: 3.0) {
      // self.changeFlight(to: data.isTakingOff ? parisToRome : londonToParis)
-        self.changeFlight(to: data.isTakingOff ? londonToParis : parisToRome, animated: true)
+        self.changeFlight(to: dataDestination.isTakingOff ? londonToParis : parisToRome, animated: true)
         // parisToRome , londonToParis ,自带 isTakingOff 的 BOOL 值
     }
   }
@@ -95,7 +101,8 @@ class ChapterFourViewController: UIViewController {
     func fade(imageView: UIImageView, toImage: UIImage , showEffects: Bool, data_dng:FlightData){
         UIView.transition(with: imageView, duration: 1.0, options: .transitionCrossDissolve, animations: {
             imageView.image = toImage
-            self.flightStatus.text = data_dng.flightStatus
+          //  self.flightStatus.text = data_dng.flightStatus
+            //     动画之间有干涉， 妈的， 代码是我加的
         }) { _ in        }
     
         UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseOut, animations: {
@@ -103,7 +110,34 @@ class ChapterFourViewController: UIViewController {
         }) { _ in        }
     
     }
+
     
+// MARK:- Challenge
+    func boardingAnimation(statusLabel: UILabel, newText: String, direction: AnimationDirection){
+        if mockStatusBanner == nil {
+            mockStatusBanner = UILabel()
+            mockStatusBanner!.font = statusLabel.font
+            mockStatusBanner!.textAlignment = statusLabel.textAlignment
+            mockStatusBanner!.backgroundColor = statusLabel.backgroundColor
+           // mockStatusBanner?.backgroundColor = .yellow
+            // 调试 需要
+            mockStatusBanner!.textColor = statusLabel.textColor
+        }
+        mockStatusBanner!.frame = statusLabel.frame              // 经常 变换的
+        mockStatusBanner!.text = newText              // 经常 变换的
+        
+        let offsetY = CGFloat(direction.rawValue) * statusLabel.frame.size.height / 2.0
+        mockStatusBanner?.transform = CGAffineTransform(translationX: 0.0, y: offsetY).scaledBy(x: 1.0, y: 0.1)
+        statusLabel.superview?.addSubview(mockStatusBanner!)
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: .transitionFlipFromBottom, animations: {
+            self.mockStatusBanner!.transform = .identity
+            statusLabel.transform = CGAffineTransform(translationX: 0.0, y: -offsetY).scaledBy(x: 1.0, y: 0.1)
+        }) { _ in
+            statusLabel.text = self.mockStatusBanner!.text
+            statusLabel.transform = .identity
+            self.mockStatusBanner?.removeFromSuperview()
+        }
+    }
     
     
     func cubeTransition(label: UILabel, textNew: String, direction: AnimationDirection){
@@ -144,6 +178,19 @@ class ChapterFourViewController: UIViewController {
         auxLabel.transform = CGAffineTransform(translationX: offset.x, y: offset.y)
         auxLabel.alpha = 0
         view.addSubview(auxLabel)
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseIn, animations: {
+            label.transform = CGAffineTransform(translationX: offset.x, y: offset.y)
+            label.alpha = 0.0
+        }) { _ in    }
+        UIView.animate(withDuration: 0.25, delay: 0.1, options: .curveEaseIn, animations: {
+            auxLabel.transform = .identity
+            auxLabel.alpha = 1.0
+        }) { _ in
+            auxLabel.removeFromSuperview()
+            label.text = text
+            label.alpha = 1.0
+            label.transform = .identity
+        }
     }
 /*
      Declaration
