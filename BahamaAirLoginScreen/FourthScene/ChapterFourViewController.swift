@@ -65,6 +65,7 @@ class ChapterFourViewController: UIViewController {
     
         
         if animated {
+            planeDepart() // Chapter 5 , key frame
             fade(imageView: bgImageView, toImage: UIImage(named: dataDestination.weatherImageName)!, showEffects: dataDestination.showWeatherEffects , data_dng: dataDestination  )
             let direction: AnimationDirection = dataDestination.isTakingOff ? .positive : .negative
             cubeTransition(label: flightNr, textNew: dataDestination.flightNr, direction: direction)
@@ -110,7 +111,43 @@ class ChapterFourViewController: UIViewController {
         }) { _ in        }
     
     }
-
+    
+// MARK:- Let us take flight
+    
+    func planeDepart(){
+        let originCenter = planeImage.center
+        UIView.animateKeyframes(withDuration: 1.5, delay: 0.0, options: [], animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.25) {
+                self.planeImage.center.x += 80.0
+                self.planeImage.center.x -= 10.0
+            }//Running the first keyframe sets in motion the code in the animations closure: the airplane moves 80 points to the right and 10 points up.
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.1, relativeDuration: 0.4, animations: {
+                self.planeImage.transform = CGAffineTransform(rotationAngle: -.pi/8)
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 0.25, animations: {
+                self.planeImage.center.x += 100.0
+                self.planeImage.center.x -= 50.0
+                self.planeImage.alpha = 0.0
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.51, relativeDuration: 0.01, animations: {
+                self.planeImage.transform = .identity
+                self.planeImage.center = CGPoint(x: 0.0, y: originCenter.y)
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.55, relativeDuration: 0.45, animations: {
+                self.planeImage.alpha = 1.0
+                self.planeImage.center = originCenter
+            })
+        }) { _ in        }  // UIViewKeyFrameAnimationOptions
+        
+        
+        
+        
+        
+    }
+    
     
 // MARK:- Challenge
     func boardingAnimation(statusLabel: UILabel, newText: String, direction: AnimationDirection){

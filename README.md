@@ -79,7 +79,7 @@ like .transitionFlipFromLeft are simply too distracting for the current
 project. .transitionCrossDissolve is a subtle “background” effect which only enhances the animations, which will happen in the foreground.
 
 
-
+#### 障眼法 非常流畅。 单个视图的 移动变化太单调了，弄一个 属性差不多的视图对象 当作残影。
 
 
 
