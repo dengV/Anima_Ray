@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		2301CB2F206B1E2600D40993 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2301CB2E206B1E2600D40993 /* ViewController.swift */; };
 		231D8B1520637EAA0006616F /* TryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231D8B1420637EAA0006616F /* TryViewController.swift */; };
+		23487BCD2079F14B00319641 /* ViewControllerFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23487BCC2079F14B00319641 /* ViewControllerFour.swift */; };
+		23487BD0207A0F1D00319641 /* BigTwo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23487BCF207A0F1D00319641 /* BigTwo.storyboard */; };
+		23487BD2207A0F6100319641 /* BigTwoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23487BD1207A0F6100319641 /* BigTwoTableViewController.swift */; };
+		23487BD6207A105B00319641 /* HorizontalItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23487BD4207A105B00319641 /* HorizontalItemList.swift */; };
+		23487BD7207A105B00319641 /* SevenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23487BD5207A105B00319641 /* SevenVC.swift */; };
 		238BE6912069D796002ECF8A /* FlightData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238BE68E2069D796002ECF8A /* FlightData.swift */; };
 		238BE6922069D796002ECF8A /* SnowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238BE68F2069D796002ECF8A /* SnowView.swift */; };
 		238BE6932069D796002ECF8A /* ChapterFourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238BE6902069D796002ECF8A /* ChapterFourViewController.swift */; };
@@ -21,6 +26,11 @@
 /* Begin PBXFileReference section */
 		2301CB2E206B1E2600D40993 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		231D8B1420637EAA0006616F /* TryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryViewController.swift; sourceTree = "<group>"; };
+		23487BCC2079F14B00319641 /* ViewControllerFour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFour.swift; sourceTree = "<group>"; };
+		23487BCF207A0F1D00319641 /* BigTwo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BigTwo.storyboard; sourceTree = "<group>"; };
+		23487BD1207A0F6100319641 /* BigTwoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigTwoTableViewController.swift; sourceTree = "<group>"; };
+		23487BD4207A105B00319641 /* HorizontalItemList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalItemList.swift; sourceTree = "<group>"; };
+		23487BD5207A105B00319641 /* SevenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SevenVC.swift; sourceTree = "<group>"; };
 		238BE68E2069D796002ECF8A /* FlightData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightData.swift; sourceTree = "<group>"; };
 		238BE68F2069D796002ECF8A /* SnowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnowView.swift; sourceTree = "<group>"; };
 		238BE6902069D796002ECF8A /* ChapterFourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterFourViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +67,26 @@
 				231D8B1420637EAA0006616F /* TryViewController.swift */,
 			);
 			path = TryScene;
+			sourceTree = "<group>";
+		};
+		23487BCB2079F13900319641 /* SceneFour */ = {
+			isa = PBXGroup;
+			children = (
+				23487BD3207A105B00319641 /* Seven */,
+				23487BCF207A0F1D00319641 /* BigTwo.storyboard */,
+				23487BCC2079F14B00319641 /* ViewControllerFour.swift */,
+				23487BD1207A0F6100319641 /* BigTwoTableViewController.swift */,
+			);
+			path = SceneFour;
+			sourceTree = "<group>";
+		};
+		23487BD3207A105B00319641 /* Seven */ = {
+			isa = PBXGroup;
+			children = (
+				23487BD4207A105B00319641 /* HorizontalItemList.swift */,
+				23487BD5207A105B00319641 /* SevenVC.swift */,
+			);
+			path = Seven;
 			sourceTree = "<group>";
 		};
 		238BE68C2069D796002ECF8A /* FourthScene */ = {
@@ -96,6 +126,7 @@
 		9C4319651A0C32D80085829B /* BahamaAirLoginScreen */ = {
 			isa = PBXGroup;
 			children = (
+				23487BCB2079F13900319641 /* SceneFour */,
 				2301CB2D206B1E2600D40993 /* SceneOne */,
 				238BE68C2069D796002ECF8A /* FourthScene */,
 				231D8B1020637E390006616F /* TryScene */,
@@ -176,6 +207,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23487BD0207A0F1D00319641 /* BigTwo.storyboard in Resources */,
 				9C43196E1A0C32D90085829B /* Main.storyboard in Resources */,
 				9C4319731A0C32D90085829B /* LaunchScreen.xib in Resources */,
 				9C4319701A0C32D90085829B /* Images.xcassets in Resources */,
@@ -189,11 +221,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23487BD6207A105B00319641 /* HorizontalItemList.swift in Sources */,
 				2301CB2F206B1E2600D40993 /* ViewController.swift in Sources */,
 				231D8B1520637EAA0006616F /* TryViewController.swift in Sources */,
 				238BE6932069D796002ECF8A /* ChapterFourViewController.swift in Sources */,
 				238BE6922069D796002ECF8A /* SnowView.swift in Sources */,
 				9C4319691A0C32D80085829B /* AppDelegate.swift in Sources */,
+				23487BD2207A0F6100319641 /* BigTwoTableViewController.swift in Sources */,
+				23487BCD2079F14B00319641 /* ViewControllerFour.swift in Sources */,
+				23487BD7207A105B00319641 /* SevenVC.swift in Sources */,
 				238BE6912069D796002ECF8A /* FlightData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

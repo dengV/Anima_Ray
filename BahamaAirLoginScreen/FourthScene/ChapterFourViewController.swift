@@ -61,7 +61,7 @@ class ChapterFourViewController: UIViewController {
 /*  Above, you supply a default value of false for the new animated parameter so that
     existing calls to this method work as they did before, with no animation.     */
     // populate the UI with the next flight's data
-    summary.text = dataDestination.summary
+   // summary.text = dataDestination.summary
     
         
         if animated {
@@ -75,6 +75,7 @@ class ChapterFourViewController: UIViewController {
             moveLabel(label: departingFrom, text: dataDestination.departingFrom, offset: offsetDeparting)
             let offsetArriving = CGPoint(x: 0.0, y: CGFloat(direction.rawValue * 50))
             moveLabel(label: arrivingTo, text: dataDestination.arrivingTo, offset: offsetArriving)
+            summarySwitch(toStr: dataDestination.summary)
         }
         else{
             bgImageView.image = UIImage(named: dataDestination.weatherImageName)
@@ -85,6 +86,7 @@ class ChapterFourViewController: UIViewController {
             departingFrom.text = dataDestination.departingFrom
             arrivingTo.text = dataDestination.arrivingTo
             flightStatus.text = dataDestination.flightStatus
+            summary.text = dataDestination.summary
         }
     
     
@@ -176,7 +178,27 @@ class ChapterFourViewController: UIViewController {
         }
     }
     
+    private func summarySwitch(toStr: String){
+        UIView.animateKeyframes(withDuration: 1.5, delay: 0.0, options: UIViewKeyframeAnimationOptions.calculationModeCubic, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.3, animations: {
+                self.summary.center.y -= 100;
+                self.summary.alpha = 0.0
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.3, relativeDuration: 0.05, animations: {
+                self.summary.text = toStr
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.35, relativeDuration: 0.65, animations: {
+                self.summary.center.y += 100;
+                self.summary.alpha = 1.0
+            })
+            
+        }) { _ in    }
+  
+    }
     
+    
+    
+// MARK:- Tutorial
     func cubeTransition(label: UILabel, textNew: String, direction: AnimationDirection){
         let auxLable = UILabel(frame: label.frame)
         auxLable.text = textNew
