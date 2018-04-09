@@ -54,3 +54,31 @@ When creating a constraint, Xcode isn’t always consistent with the order of th
 
 If you have the Packing List label as the first item, great! If not, that’s a relatively easy thing to fix. Click on the dropdown menu under First Item and select Reverse First And Second Item:
 
+
+
+
+
+
+
+### Animating constraints
+
+
+Animating constraints is no more difficult than animating properties; it’s just a little different. Usually you simply replace an existing constraint with a new one and let Auto Layout animate the UI between the two states.
+
+
+
+
+# 第七章
+## Inspecting and animating constraints
+
+Working with outlets in a visual fashion is a relatively easy way to connect up your outlets, but sometimes you can’t use Interface Builder to connect all the bits of your UI to your outlets. You might add constraints from code, or maybe you just don’t want to Control-drag and create a massive number of outlets!
+
+In these cases, you need to inspect the existing constraints at runtime and modify in code the ones you want to animate.
+
+Luckily, the UIView class has a property named constraints, which gives you a list of all constraints that affect the given view. How convenient is that?
+
+> Add the following code to the top of actionToggleMenu():
+
+This one-liner loops over all constraints affecting the menu bar view and prints them one by one to Xcode’s output console.
+
+

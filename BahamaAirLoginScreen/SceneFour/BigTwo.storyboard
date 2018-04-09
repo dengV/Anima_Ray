@@ -289,6 +289,8 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="buttonMenu" destination="eEB-Qy-L0e" id="eOc-cp-GTR"/>
+                        <outlet property="lhsButtonMenu" destination="qtZ-fX-adZ" id="wku-ad-mIy"/>
+                        <outlet property="menuHeightConstraint" destination="8Db-g9-rQ8" id="cWD-Vy-umw"/>
                         <outlet property="tableView" destination="cll-4a-Ufn" id="tz1-Yp-MrJ"/>
                         <outlet property="titleLabel" destination="6Cu-6D-8Iq" id="Cxq-gc-Wnw"/>
                     </connections>
