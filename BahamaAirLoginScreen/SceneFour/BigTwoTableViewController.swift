@@ -22,6 +22,13 @@ class BigTwoTableViewController: UITableViewController {
         self.navigationItem.title = "第二大章: 约束"
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -86,4 +93,24 @@ class BigTwoTableViewController: UITableViewController {
     }
     */
 
+}
+
+
+
+extension BigTwoTableViewController{
+    // MARK: DNG Methods
+    
+    @IBAction func backTo(_ segue: UIStoryboardSegue) { }
+    
+/*
+     
+     Storyboards provide the ability to ‘go back’ with something called an unwind segue, which you’ll implement next. There’s three main steps:
+     
+     1, Create an object for the user to select, usually a button.
+     2, Create an unwind method in the controller you want to return to.
+        (这句话 很关键，  unwind segue 就像是 任意门 一样了)
+     3, Hook up the method and the object in the storyboard.
+     
+     */
+    
 }

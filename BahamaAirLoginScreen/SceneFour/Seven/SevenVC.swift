@@ -45,6 +45,8 @@ class SevenVC: UIViewController {
   func showItem(_ index: Int) {
     print("tapped item \(index)")
   }
+    
+    
 }
 
 
@@ -60,6 +62,16 @@ extension SevenVC: UITableViewDelegate, UITableViewDataSource {
     self.tableView?.rowHeight = 54.0
   }
   
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    
+
+    
+    
   // MARK: Table View methods
   
   func numberOfSections(in tableView: UITableView) -> Int {
