@@ -1,5 +1,10 @@
 
-
+/*
+ firstItem.firstAttribute = multiplier * secondItem.secondAttribute + constant
+ 
+ 
+ 
+ */
 import UIKit
 
 class SevenVC: UIViewController {
@@ -40,16 +45,27 @@ class SevenVC: UIViewController {
         }
     })
      */
-    
-    titleLabel.superview?.constraints.forEach({ constraint in
+    /*titleLabel.superview?.constraints.forEach({ constraint in
+     
+     
+     好像 ({ constraint in ， 这个 括号 可以删除， 形成 尾闭包
+     */
+    titleLabel.superview?.constraints.forEach{ constraint in
         print(" -> \(constraint.description) \n")
         if constraint.firstItem === titleLabel && constraint.firstAttribute == .centerY{
             constraint.constant = isMenuOpen ? -80.0 : 0.0
-            return
+           // return
         }
-    })
+        if constraint.identifier == "TitleCenterY" {
+            constraint.isActive = false
+            let newConstraint = NSLayoutConstraint(item: titleLabel, attribute: .centerY, relatedBy: .equal, toItem: titleLabel.superview!, attribute: .centerY, multiplier: isMenuOpen ? 0.67 : 1.0, constant: 5.0)
+            newConstraint.identifier = "TitleCenterY"
+            newConstraint.isActive = true
+          //  return
+        }
+    }
     
-    
+//   直接 改 约束， 高度 200.0 ，约定好的
     menuHeightConstraint.constant = isMenuOpen ? 200.0 : 60.0
     titleLabel.text = isMenuOpen ? "Select Item" : "Pack List"
     UIView.animate(withDuration: 1.0, delay: 0.0, usingSpringWithDamping: 0.4, initialSpringVelocity: 10.0, options: .curveEaseIn, animations: {
@@ -66,6 +82,21 @@ class SevenVC: UIViewController {
             self.buttonMenu.transform = CGAffineTransform(rotationAngle: angel)
         })
     }*/
+    
+    if isMenuOpen {
+        slider = HorizontalItemList(inView: view)
+        slider.didSelectItem = { index in
+            print(" add \(index) ")
+            self.items.append(index)
+            self.tableView.reloadData()
+            self.actionToggleMenu(self)
+        }
+        self.titleLabel.superview!.addSubview(slider)
+    }
+    else{
+        slider.removeFromSuperview()
+    }//     if isMenuOpen {
+    
   }
   
   func showItem(_ index: Int) {
@@ -73,7 +104,7 @@ class SevenVC: UIViewController {
   }
     
     
-}
+}//     class SevenVC: UIViewController
 
 
 let itemTitles = ["Icecream money", "Great weather", "Beach ball", "Swim suit for him", "Swim suit for her", "Beach games", "Ironing board", "Cocktail mood", "Sunglasses", "Flip flops"]
@@ -122,3 +153,15 @@ extension SevenVC: UITableViewDelegate, UITableViewDataSource {
   }
   
 }
+
+
+
+
+/*
+  -> <NSLayoutConstraint:0x604000284830 UIButton:0x7fb91455f5c0'+'.centerY == UIView:0x7fb914415ee0.centerY   (active)>
+ 
+ 
+ 
+ UIButton ， 有一个 name    "+"
+ 
+ */

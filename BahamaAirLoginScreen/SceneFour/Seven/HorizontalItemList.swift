@@ -8,7 +8,7 @@ import UIKit
 //
 class HorizontalItemList: UIScrollView {
   
-  var didSelectItem: ((_ index: Int)->())?
+  var didSelectItem: ((_ index: Int)->())?  // 一级公民， 函数是
   
   let buttonWidth: CGFloat = 60.0
   let padding: CGFloat = 10.0
@@ -23,6 +23,10 @@ class HorizontalItemList: UIScrollView {
   
   convenience init(inView: UIView) {
     let rect = CGRect(x: inView.bounds.width, y: 120.0, width: inView.frame.width, height: 80.0)
+    /*  x: inView.bounds.width
+    
+        X 坐标， 动画 处理
+     */
     self.init(frame: rect)
     
     alpha = 0.0
@@ -68,3 +72,10 @@ class HorizontalItemList: UIScrollView {
     )
   }
 }
+
+
+/*
+ 
+ Note: This chapter won’t cover HorizontalItemList in detail; its implementation isn’t relevant to creating animations. However, you’re still welcome to peek into HorizontalItemList.swift if you want to see how it works!
+ 
+ */

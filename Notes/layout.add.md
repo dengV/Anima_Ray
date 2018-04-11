@@ -4,7 +4,7 @@ There’s just one more thing to take care of before you move on: you need to co
 Ctrl-drag with the mouse from the view controller object to the table view, then select tableView from the popup menu:
 
 
-
+<img src="https://github.com/dengV/Anima_Ray/blob/master/DescriptionImages/LayoutCtrlDragSecond.png">
 
 
 
