@@ -30,6 +30,12 @@ class SevenVC: UIViewController {
   var isMenuOpen = false
   var items: [Int] = [5, 6, 7]
   
+    
+    //
+    var imageView_DNG: UIImageView?
+    
+    
+    
   //MARK: class methods
   
   @IBAction func actionToggleMenu(_ sender: AnyObject) {
@@ -101,8 +107,90 @@ class SevenVC: UIViewController {
   
   func showItem(_ index: Int) {
     print("tapped item \(index)")
-  }
+    let imageView = UIImageView(image: UIImage(named: "summericons_100px_0\(index).png"))
+    imageView.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
+    imageView.layer.cornerRadius = 5.0
+    imageView.layer.masksToBounds = true
+    imageView.translatesAutoresizingMaskIntoConstraints = false
+    view.addSubview(imageView)
+    let conCenterX = imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+    let conBottom = imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: imageView.frame.size.height)
+    //      正好 在 屏幕 下方
     
+    let conWidth = imageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.33, constant: -50.0)
+    let conHeight = imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor)
+    NSLayoutConstraint.activate([conCenterX, conBottom, conWidth, conHeight ])
+    /*print("imageView's frame = \(imageView.frame)")
+    
+    This is, of course, just the starting position of your animation. Your job now is to make the image pop up from the bottom.
+    */
+    
+    view.layoutIfNeeded()
+    
+    // Adding additional dynamic animations
+    
+    UIView.animate(withDuration: 0.8, delay: 0.0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.0, animations: {
+        conBottom.constant = -imageView.frame.size.height/2 - 49
+        conWidth.constant = 0.0
+        self.view.layoutIfNeeded()
+    }) { (_) in    }
+    
+   UIView.animate(withDuration: 0.5, delay: 2, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.1, options: UIViewAnimationOptions.curveEaseIn, animations: {
+        conBottom.constant = imageView.frame.size.height
+        conWidth.constant = -50.0
+        self.view.layoutIfNeeded()
+    }) { (_) in
+        imageView.removeFromSuperview()
+    }
+    
+  }//func showItem(_ index: Int)
+    
+    
+    
+    
+    func showItemTwo(_ index: Int) {
+        print("tapped item \(index)")
+        if imageView_DNG == nil {
+            
+        
+            imageView_DNG = UIImageView(image: UIImage(named: "summericons_100px_0\(index).png"))
+            imageView_DNG!.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
+            imageView_DNG!.layer.cornerRadius = 5.0
+            imageView_DNG!.layer.masksToBounds = true
+            imageView_DNG!.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(imageView_DNG! )
+            let conCenterX = imageView_DNG!.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            let conBottom = imageView_DNG!.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: imageView_DNG!.frame.size.height)
+            //      正好 在 屏幕 下方
+            
+            let conWidth = imageView_DNG!.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.33, constant: -50.0)
+            let conHeight = imageView_DNG!.heightAnchor.constraint(equalTo: imageView_DNG!.widthAnchor)
+            NSLayoutConstraint.activate([conCenterX, conBottom, conWidth, conHeight ])
+            /*print("imageView's frame = \(imageView.frame)")
+             
+             This is, of course, just the starting position of your animation. Your job now is to make the image pop up from the bottom.
+             */
+            
+            view.layoutIfNeeded()
+            
+            // Adding additional dynamic animations
+            
+            UIView.animate(withDuration: 0.8, delay: 0.0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.0, animations: {
+                conBottom.constant = -self.imageView_DNG!.frame.size.height/2 - 49
+                conWidth.constant = 0.0
+                self.view.layoutIfNeeded()
+            }) { (_) in    }
+        }
+        else{
+            UIView.animate(withDuration: 0.8, delay: 0.0, options: [.transitionCrossDissolve, .curveEaseIn], animations: {
+                self.imageView_DNG!.image = UIImage(named: "summericons_100px_0\(index).png")
+            }, completion: { (_) in            })
+            
+        }
+
+        
+        
+    }//func showItem(_ index: Int)
     
 }//     class SevenVC: UIViewController
 
@@ -149,7 +237,8 @@ extension SevenVC: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
-    showItem(items[indexPath.row])
+    //  showItem(items[indexPath.row])
+    showItemTwo( items[indexPath.row] )
   }
   
 }
