@@ -17,6 +17,7 @@
 		238BE6912069D796002ECF8A /* FlightData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238BE68E2069D796002ECF8A /* FlightData.swift */; };
 		238BE6922069D796002ECF8A /* SnowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238BE68F2069D796002ECF8A /* SnowView.swift */; };
 		238BE6932069D796002ECF8A /* ChapterFourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238BE6902069D796002ECF8A /* ChapterFourViewController.swift */; };
+		23AF04DC207E0653001E351C /* ViewControllerEightLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AF04DB207E0653001E351C /* ViewControllerEightLayer.swift */; };
 		9C4319691A0C32D80085829B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4319681A0C32D80085829B /* AppDelegate.swift */; };
 		9C43196E1A0C32D90085829B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C43196C1A0C32D90085829B /* Main.storyboard */; };
 		9C4319701A0C32D90085829B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C43196F1A0C32D90085829B /* Images.xcassets */; };
@@ -34,6 +35,7 @@
 		238BE68E2069D796002ECF8A /* FlightData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightData.swift; sourceTree = "<group>"; };
 		238BE68F2069D796002ECF8A /* SnowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnowView.swift; sourceTree = "<group>"; };
 		238BE6902069D796002ECF8A /* ChapterFourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterFourViewController.swift; sourceTree = "<group>"; };
+		23AF04DB207E0653001E351C /* ViewControllerEightLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerEightLayer.swift; sourceTree = "<group>"; };
 		9C4319631A0C32D80085829B /* BahamaAirLoginScreen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BahamaAirLoginScreen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C4319671A0C32D80085829B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C4319681A0C32D80085829B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +109,14 @@
 			path = SubClass;
 			sourceTree = "<group>";
 		};
+		23AF04DA207E0653001E351C /* LayerAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				23AF04DB207E0653001E351C /* ViewControllerEightLayer.swift */,
+			);
+			path = LayerAnimation;
+			sourceTree = "<group>";
+		};
 		9C43195A1A0C32D80085829B = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +136,7 @@
 		9C4319651A0C32D80085829B /* BahamaAirLoginScreen */ = {
 			isa = PBXGroup;
 			children = (
+				23AF04DA207E0653001E351C /* LayerAnimation */,
 				23487BCB2079F13900319641 /* SceneFour */,
 				2301CB2D206B1E2600D40993 /* SceneOne */,
 				238BE68C2069D796002ECF8A /* FourthScene */,
@@ -225,6 +236,7 @@
 				2301CB2F206B1E2600D40993 /* ViewController.swift in Sources */,
 				231D8B1520637EAA0006616F /* TryViewController.swift in Sources */,
 				238BE6932069D796002ECF8A /* ChapterFourViewController.swift in Sources */,
+				23AF04DC207E0653001E351C /* ViewControllerEightLayer.swift in Sources */,
 				238BE6922069D796002ECF8A /* SnowView.swift in Sources */,
 				9C4319691A0C32D80085829B /* AppDelegate.swift in Sources */,
 				23487BD2207A0F6100319641 /* BigTwoTableViewController.swift in Sources */,

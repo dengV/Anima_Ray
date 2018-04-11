@@ -8,6 +8,18 @@ func delay(seconds: Double, completion: @escaping ()-> Void) {
   DispatchQueue.main.asyncAfter(deadline: .now() + seconds, execute: completion)
 }
 
+/*
+ 
+ // A delay function
+ func delay(seconds: Double, completion: @escaping ()-> Void) {
+ 
+ 
+ 
+ 我还 以为 这是， 系统 默认提供的
+ */
+
+
+
 class ChapterFourViewController: UIViewController {
     
     enum AnimationDirection: Int{
