@@ -18,6 +18,9 @@
 		238BE6922069D796002ECF8A /* SnowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238BE68F2069D796002ECF8A /* SnowView.swift */; };
 		238BE6932069D796002ECF8A /* ChapterFourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238BE6902069D796002ECF8A /* ChapterFourViewController.swift */; };
 		23AF04DC207E0653001E351C /* ViewControllerEightLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AF04DB207E0653001E351C /* ViewControllerEightLayer.swift */; };
+		23AF04DE207E697A001E351C /* LayerTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AF04DD207E697A001E351C /* LayerTableVC.swift */; };
+		23AF04E2207E6BF6001E351C /* LayerNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AF04E1207E6BF6001E351C /* LayerNavigationVC.swift */; };
+		23AF04E4207E6C9F001E351C /* MainTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AF04E3207E6C9F001E351C /* MainTabBarVC.swift */; };
 		9C4319691A0C32D80085829B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4319681A0C32D80085829B /* AppDelegate.swift */; };
 		9C43196E1A0C32D90085829B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C43196C1A0C32D90085829B /* Main.storyboard */; };
 		9C4319701A0C32D90085829B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C43196F1A0C32D90085829B /* Images.xcassets */; };
@@ -36,6 +39,9 @@
 		238BE68F2069D796002ECF8A /* SnowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnowView.swift; sourceTree = "<group>"; };
 		238BE6902069D796002ECF8A /* ChapterFourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterFourViewController.swift; sourceTree = "<group>"; };
 		23AF04DB207E0653001E351C /* ViewControllerEightLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerEightLayer.swift; sourceTree = "<group>"; };
+		23AF04DD207E697A001E351C /* LayerTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerTableVC.swift; sourceTree = "<group>"; };
+		23AF04E1207E6BF6001E351C /* LayerNavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerNavigationVC.swift; sourceTree = "<group>"; };
+		23AF04E3207E6C9F001E351C /* MainTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarVC.swift; sourceTree = "<group>"; };
 		9C4319631A0C32D80085829B /* BahamaAirLoginScreen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BahamaAirLoginScreen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C4319671A0C32D80085829B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C4319681A0C32D80085829B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +119,8 @@
 			isa = PBXGroup;
 			children = (
 				23AF04DB207E0653001E351C /* ViewControllerEightLayer.swift */,
+				23AF04DD207E697A001E351C /* LayerTableVC.swift */,
+				23AF04E1207E6BF6001E351C /* LayerNavigationVC.swift */,
 			);
 			path = LayerAnimation;
 			sourceTree = "<group>";
@@ -143,6 +151,7 @@
 				231D8B1020637E390006616F /* TryScene */,
 				9C4319681A0C32D80085829B /* AppDelegate.swift */,
 				9C43196C1A0C32D90085829B /* Main.storyboard */,
+				23AF04E3207E6C9F001E351C /* MainTabBarVC.swift */,
 				9C43196F1A0C32D90085829B /* Images.xcassets */,
 				9C4319711A0C32D90085829B /* LaunchScreen.xib */,
 				9C4319661A0C32D80085829B /* Supporting Files */,
@@ -235,12 +244,15 @@
 				23487BD6207A105B00319641 /* HorizontalItemList.swift in Sources */,
 				2301CB2F206B1E2600D40993 /* ViewController.swift in Sources */,
 				231D8B1520637EAA0006616F /* TryViewController.swift in Sources */,
+				23AF04DE207E697A001E351C /* LayerTableVC.swift in Sources */,
+				23AF04E2207E6BF6001E351C /* LayerNavigationVC.swift in Sources */,
 				238BE6932069D796002ECF8A /* ChapterFourViewController.swift in Sources */,
 				23AF04DC207E0653001E351C /* ViewControllerEightLayer.swift in Sources */,
 				238BE6922069D796002ECF8A /* SnowView.swift in Sources */,
 				9C4319691A0C32D80085829B /* AppDelegate.swift in Sources */,
 				23487BD2207A0F6100319641 /* BigTwoTableViewController.swift in Sources */,
 				23487BCD2079F14B00319641 /* ViewControllerFour.swift in Sources */,
+				23AF04E4207E6C9F001E351C /* MainTabBarVC.swift in Sources */,
 				23487BD7207A105B00319641 /* SevenVC.swift in Sources */,
 				238BE6912069D796002ECF8A /* FlightData.swift in Sources */,
 			);

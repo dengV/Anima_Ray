@@ -123,10 +123,10 @@
             </objects>
             <point key="canvasLocation" x="2782" y="-931"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab BarVC-->
         <scene sceneID="umZ-6J-piB">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="FD1-tm-lbi" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="FD1-tm-lbi" customClass="MainTabBarVC" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0g4-JB-Emd">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -407,10 +407,10 @@
             </objects>
             <point key="canvasLocation" x="1728" y="1554"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Layer Cases View Controller-->
         <scene sceneID="DdG-0s-ppx">
             <objects>
-                <tableViewController id="nqP-Ys-5ht" sceneMemberID="viewController">
+                <tableViewController id="nqP-Ys-5ht" customClass="LayerTableVC" customModule="BahamaAirLoginScreen" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ncb-da-Fv3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -525,7 +525,7 @@
                             <outlet property="delegate" destination="nqP-Ys-5ht" id="FFu-tD-vIf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="BdB-Q4-wXV"/>
+                    <navigationItem key="navigationItem" title="Layer Cases View Controller" id="BdB-Q4-wXV"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7jt-0p-isR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -534,7 +534,7 @@
         <!--Layer-->
         <scene sceneID="MgV-9V-MFP">
             <objects>
-                <navigationController id="l4a-D2-L2O" sceneMemberID="viewController">
+                <navigationController id="l4a-D2-L2O" customClass="LayerNavigationVC" customModule="BahamaAirLoginScreen" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Layer" image="balloon" badgeValue="9" id="GhW-V3-WR6"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Xa7-Gm-aX5">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

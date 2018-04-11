@@ -29,16 +29,10 @@ class ViewControllerEightLayer: UIViewController {
     
 // DNG methods
     
-    
-    
-    
+    let tabBarViewController = UIApplication.shared.keyWindow!.rootViewController as! UITabBarController
     
   // MARK: view controller methods
     
-    
-    
-    
-
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -70,13 +64,13 @@ class ViewControllerEightLayer: UIViewController {
     self.navigationController?.setNavigationBarHidden(true, animated: animated)
     //self.navigationController?.setToolbarHidden(true, animated: true)
 
-        var nextResponder = self.next!
+      /*  var nextResponder = self.next!
         
         while !(nextResponder is UITabBarController) {
             nextResponder = (nextResponder.next)!
         }
-        let tabBarViewController = nextResponder as! UITabBarController
-
+        let tabBarViewController = nextResponder as! UITabBarController*/
+    
     tabBarViewController.tabBar.isHidden = true
     
     heading.center.x  -= view.bounds.width
@@ -264,6 +258,16 @@ class ViewControllerEightLayer: UIViewController {
 
 // MARK: UITextFieldDelegate
 extension ViewControllerEightLayer: UITextFieldDelegate{
+    
+    /*
+    override var next: UIResponder?{
+        get{
+            return super.next
+            
+        }
+    }*/
+    
+    
 
 func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     let nextField = (textField === username) ? password : username
@@ -273,11 +277,13 @@ func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.navigationController?.setNavigationBarHidden(false, animated: true )
         //navigationController?.setToolbarHidden(false, animated: true)
         //tabBarViewController.tabBar.isHidden = false
+        tabBarViewController.tabBar.isHidden = false
     }
     else{
         self.navigationController?.setNavigationBarHidden(true, animated: true )
         //navigationController?.setToolbarHidden(true, animated: true)
      //   tabBarViewController.tabBar.isHidden = true
+        tabBarViewController.tabBar.isHidden = true
     }
     return true
 }
