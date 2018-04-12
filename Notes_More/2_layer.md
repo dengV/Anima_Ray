@@ -17,6 +17,9 @@ A layer is a simple model class that exposes a number of properties to represent
 • Finally, Core Animation optimizes the caching of layer contents and fast drawing directly on the GPU.
 
 
+> 一个是 GPU
+
+
 To compare views and layers side by side:
 
 
@@ -25,6 +28,10 @@ To compare views and layers side by side:
 • Complex view hierarchy layouts, Auto Layout, etc.
 • User interactions.
 • Often have custom logic or custom drawing code that executes on the main thread on the CPU.
+
+> 一个是 CPU
+
+
 • Very flexible, powerful, lots of classes to subclass.
 
 

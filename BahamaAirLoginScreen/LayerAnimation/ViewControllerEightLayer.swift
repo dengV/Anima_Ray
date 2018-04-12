@@ -69,20 +69,35 @@ class ViewControllerEightLayer: UIViewController {
     //self.next?.target(forAction: <#T##Selector#>, withSender: <#T##Any?#>)
     
     
-    
+    /*
         var nextResponder = self.next!
         
         while !(nextResponder is UITabBarController) {
             nextResponder = (nextResponder.next)!
-        }
-      //  let tabBarViewController = nextResponder as! UITabBarController*/
+        }*/
+    /*    let tabBarViewController = nextResponder as! UITabBarController*/
     
-   // tabBarViewController.tabBar.isHidden = true
+    tabBarViewController.tabBar.isHidden = true
     
-    heading.center.x  -= view.bounds.width
-    username.center.x -= view.bounds.width
-    password.center.x -= view.bounds.width
-
+   // heading.center.x  -= view.bounds.width
+    // Comment it,
+    // There’s no need to perform this action anymore since you can specify both the start and end values in your layer animation.
+    
+    
+    let flyRight = CABasicAnimation(keyPath: "position.x")
+    flyRight.fillMode = kCAFillModeBoth
+   // flyRight.fromValue = -view.bounds.size.width/2
+    flyRight.toValue = view.bounds.size.width/2
+    flyRight.duration = 0.5   //2  //0.5
+    
+    heading.layer.add(flyRight, forKey: nil)
+    
+    flyRight.beginTime = CACurrentMediaTime() + 0.3    //2.0  //0.3
+    username.layer.add(flyRight, forKey: nil)
+    
+    flyRight.beginTime = CACurrentMediaTime() + 0.4     //4.0  //0.4
+    password.layer.add(flyRight, forKey: nil)
+    
     cloud1.alpha = 0.0
     cloud2.alpha = 0.0
     cloud3.alpha = 0.0
@@ -90,31 +105,29 @@ class ViewControllerEightLayer: UIViewController {
 
     loginButton.center.y += 30.0
     loginButton.alpha = 0.0
-  }
+    
+    //   Debugging basic animations
+    username.layer.position.x -= view.bounds.width
+    password.layer.position.x -= view.bounds.width
+    
+    delay(5.0) {
+        print("Where are the fields?")
+    }
+  }//   override func viewWillAppear(_ animated: Bool)
 
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-
+/*
     UIView.animate(withDuration: 0.5) {
       self.heading.center.x += self.view.bounds.width
     }
-
-    UIView.animate(withDuration: 0.5, delay: 0.3, usingSpringWithDamping: 0.6,
-      initialSpringVelocity: 0.0,
-      animations: {
-        self.username.center.x += self.view.bounds.width
-      },
-      completion: nil
-    )
-
-    UIView.animate(withDuration: 0.5, delay: 0.4, usingSpringWithDamping: 0.6,
-      initialSpringVelocity: 0.0,
-      animations: {
-        self.password.center.x += self.view.bounds.width
-      },
-      completion: nil
-    )
-
+     
+     
+     Coupled :
+     viewWillAppear
+     
+     */
+    
     UIView.animate(withDuration: 0.5, delay: 0.5,
       animations: {
         self.cloud1.alpha = 1.0
@@ -156,7 +169,7 @@ class ViewControllerEightLayer: UIViewController {
     animateCloud(cloud2)
     animateCloud(cloud3)
     animateCloud(cloud4)
-  }
+  }//  override func viewDidAppear(_ animated: Bool)
 
   func showMessage(index: Int) {
     label.text = messages[index]
@@ -265,13 +278,13 @@ class ViewControllerEightLayer: UIViewController {
 // MARK: UITextFieldDelegate
 extension ViewControllerEightLayer: UITextFieldDelegate{
     
-    
+    /*
     override var next: UIResponder?{
         get{
             return super.next
             
         }
-    }
+    }*/
     
     
 
@@ -281,15 +294,13 @@ func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     
     if textField.text == "1" {
         self.navigationController?.setNavigationBarHidden(false, animated: true )
-        //navigationController?.setToolbarHidden(false, animated: true)
-        //tabBarViewController.tabBar.isHidden = false
+        navigationController?.setToolbarHidden(false, animated: true)
         tabBarViewController.tabBar.isHidden = false
     }
     else{
         self.navigationController?.setNavigationBarHidden(true, animated: true )
-        //navigationController?.setToolbarHidden(true, animated: true)
-     //   tabBarViewController.tabBar.isHidden = true
-        tabBarViewController.tabBar.isHidden = true
+        navigationController?.setToolbarHidden(true, animated: true)
+          tabBarViewController.tabBar.isHidden = true
     }
     return true
 }

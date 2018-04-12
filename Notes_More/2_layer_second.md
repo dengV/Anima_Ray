@@ -66,6 +66,12 @@ You can animate all aspects of the layer’s shadow:
 • shadowRadius: Modify this to control the blur of the shadow; this is especially useful when simulating movement of the view towards or away from the surface where the shadow is cast.
 
 
+# 这句话， 怎么理解 ？
+
+> 百度 翻译
+> 修改这个控件来控制阴影的模糊度，当模拟视图移动或远离阴影投射的表面时，这特别有用。
+
+
 <hr>
 
 

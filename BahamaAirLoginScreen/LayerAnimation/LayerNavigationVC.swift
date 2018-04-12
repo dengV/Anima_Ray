@@ -20,14 +20,14 @@ class LayerNavigationVC: UINavigationController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    /*
     override var next: UIResponder?{
         get{
             return super.next
             
         }
     }
- 
+ */
  
  
     /*
