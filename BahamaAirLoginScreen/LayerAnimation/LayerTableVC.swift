@@ -27,13 +27,13 @@ class LayerTableVC: UITableViewController {
 
     
     // MARK: - Table view data source
-/*
+
     override var next: UIResponder?{
         get{
             return super.next
         }
     }
-*/
+
     
     
     /*

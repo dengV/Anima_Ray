@@ -64,14 +64,20 @@ class ViewControllerEightLayer: UIViewController {
     self.navigationController?.setNavigationBarHidden(true, animated: animated)
     //self.navigationController?.setToolbarHidden(true, animated: true)
 
-      /*  var nextResponder = self.next!
+    
+    
+    //self.next?.target(forAction: <#T##Selector#>, withSender: <#T##Any?#>)
+    
+    
+    
+        var nextResponder = self.next!
         
         while !(nextResponder is UITabBarController) {
             nextResponder = (nextResponder.next)!
         }
-        let tabBarViewController = nextResponder as! UITabBarController*/
+      //  let tabBarViewController = nextResponder as! UITabBarController*/
     
-    tabBarViewController.tabBar.isHidden = true
+   // tabBarViewController.tabBar.isHidden = true
     
     heading.center.x  -= view.bounds.width
     username.center.x -= view.bounds.width
@@ -259,13 +265,13 @@ class ViewControllerEightLayer: UIViewController {
 // MARK: UITextFieldDelegate
 extension ViewControllerEightLayer: UITextFieldDelegate{
     
-    /*
+    
     override var next: UIResponder?{
         get{
             return super.next
             
         }
-    }*/
+    }
     
     
 
