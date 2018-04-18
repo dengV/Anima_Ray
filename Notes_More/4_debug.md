@@ -70,7 +70,7 @@ Let’s look for the text fields now.
 Aha — there are those pesky fields; they’re outside the visible screen area. Select a field to inspect its live properties in the Object Inspector and other field properties in the Size Inspector in the next tab:
 
 
-> 这幅图， 上半部分内容 是 点击
+> 这幅图， 先 点击
 > UITextField
 > 下半部分 是 点击 UITextField 的 子项， UITextFieldLabel - Username
 

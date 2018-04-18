@@ -85,18 +85,25 @@ class ViewControllerEightLayer: UIViewController {
     
     
     let flyRight = CABasicAnimation(keyPath: "position.x")
-    flyRight.fillMode = kCAFillModeBoth
-   // flyRight.fromValue = -view.bounds.size.width/2
+    //  flyRight.fillMode = kCAFillModeBoth
+    //  放下面 好。 随用 随 设置
+    
+    // flyRight.isRemovedOnCompletion = false   //  组 2
+    flyRight.fromValue = -view.bounds.size.width/2   //   组 1
+    
     flyRight.toValue = view.bounds.size.width/2
     flyRight.duration = 0.5   //2  //0.5
     
     heading.layer.add(flyRight, forKey: nil)
     
+    flyRight.fillMode = kCAFillModeBoth
     flyRight.beginTime = CACurrentMediaTime() + 0.3    //2.0  //0.3
     username.layer.add(flyRight, forKey: nil)
+    username.layer.position.x = view.bounds.width/2     //   组 1
     
     flyRight.beginTime = CACurrentMediaTime() + 0.4     //4.0  //0.4
     password.layer.add(flyRight, forKey: nil)
+    password.layer.position.x = view.bounds.width/2     //   组 1
     
     cloud1.alpha = 0.0
     cloud2.alpha = 0.0
@@ -107,8 +114,8 @@ class ViewControllerEightLayer: UIViewController {
     loginButton.alpha = 0.0
     
     //   Debugging basic animations
-    username.layer.position.x -= view.bounds.width
-    password.layer.position.x -= view.bounds.width
+   // username.layer.position.x -= view.bounds.width         //  组 2
+  //  password.layer.position.x -= view.bounds.width         //  组 2
     
     delay(5.0) {
         print("Where are the fields?")
