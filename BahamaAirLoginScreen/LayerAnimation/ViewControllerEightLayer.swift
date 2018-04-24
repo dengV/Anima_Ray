@@ -105,10 +105,6 @@ class ViewControllerEightLayer: UIViewController {
     password.layer.add(flyRight, forKey: nil)
     password.layer.position.x = view.bounds.width/2     //   组 1
     
-    cloud1.alpha = 0.0
-    cloud2.alpha = 0.0
-    cloud3.alpha = 0.0
-    cloud4.alpha = 0.0
 
     loginButton.center.y += 30.0
     loginButton.alpha = 0.0
@@ -117,9 +113,31 @@ class ViewControllerEightLayer: UIViewController {
    // username.layer.position.x -= view.bounds.width         //  组 2
   //  password.layer.position.x -= view.bounds.width         //  组 2
     
-    delay(5.0) {
+   /* delay(5.0) {
         print("Where are the fields?")
-    }
+    }*/
+    
+    let cloudAlphaAnimation = CABasicAnimation(keyPath: "opacity") // not "alpha"
+    cloudAlphaAnimation.fromValue = 0.0
+    cloudAlphaAnimation.toValue = 1.0
+    cloudAlphaAnimation.duration = 0.5      //  0.7      // 0.5
+    cloudAlphaAnimation.fillMode = kCAFillModeBackwards
+    //  返回 cloud 是 不能点击 的 背景 视图，
+    //  用 kCAFillModeBackwards 这个， 可真是 太好啦
+    
+    
+    cloudAlphaAnimation.beginTime = CACurrentMediaTime() + 0.5 //0.5
+    cloud1.layer.add(cloudAlphaAnimation, forKey: nil)
+    cloudAlphaAnimation.beginTime = CACurrentMediaTime() + 0.7  //  1.0     //0.7
+    cloud2.layer.add(cloudAlphaAnimation, forKey: nil)
+    cloudAlphaAnimation.beginTime = CACurrentMediaTime() + 0.9  //1.5  //   0.9
+    cloud3.layer.add(cloudAlphaAnimation, forKey: nil)
+    cloudAlphaAnimation.beginTime = CACurrentMediaTime() + 1.1  //2.0 // 1.1
+    cloud4.layer.add(cloudAlphaAnimation, forKey: nil)
+    
+    
+    
+    
   }//   override func viewWillAppear(_ animated: Bool)
 
   override func viewDidAppear(_ animated: Bool) {
@@ -135,33 +153,7 @@ class ViewControllerEightLayer: UIViewController {
      
      */
     
-    UIView.animate(withDuration: 0.5, delay: 0.5,
-      animations: {
-        self.cloud1.alpha = 1.0
-      },
-      completion: nil
-    )
 
-    UIView.animate(withDuration: 0.5, delay: 0.7,
-      animations: {
-        self.cloud2.alpha = 1.0
-      },
-      completion: nil
-    )
-
-    UIView.animate(withDuration: 0.5, delay: 0.9,
-      animations: {
-        self.cloud3.alpha = 1.0
-      },
-      completion: nil
-    )
-
-    UIView.animate(withDuration: 0.5, delay: 1.1,
-      animations: {
-        self.cloud4.alpha = 1.0
-      },
-      completion: nil
-    )
 
     UIView.animate(withDuration: 0.5, delay: 0.5, usingSpringWithDamping: 0.5,
       initialSpringVelocity: 0.0,
