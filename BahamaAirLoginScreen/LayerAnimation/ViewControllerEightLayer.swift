@@ -3,6 +3,36 @@
 import UIKit
 
 
+
+
+public func tintBackgroundColor(layer: CALayer, toColor: UIColor){
+    let animation = CABasicAnimation(keyPath: "backgroundColor")
+    animation.fromValue = layer.backgroundColor
+    animation.toValue = toColor.cgColor
+    animation.duration = 1.0
+    layer.add(animation, forKey: nil)
+    layer.backgroundColor = toColor.cgColor
+    
+/*
+     As an added bonus, since your new function tintBackgroundColor is a top-level function, you can re-use it anywhere you like in your project!
+     */
+}
+
+
+
+func roundCorners(layer: CALayer, toRadius: CGFloat){
+    let animation = CABasicAnimation(keyPath: "cornerRadius")
+    animation.fromValue = layer.cornerRadius
+    animation.toValue = toRadius
+    animation.duration = 0.33
+    layer.add(animation, forKey: nil)
+    layer.cornerRadius = toRadius
+    
+}   //  the layer specific property cornerRadius
+
+
+
+
 class ViewControllerEightLayer: UIViewController {
 
   // MARK: IB outlets
@@ -31,7 +61,9 @@ class ViewControllerEightLayer: UIViewController {
     
     let tabBarViewController = UIApplication.shared.keyWindow!.rootViewController as! UITabBarController
     
+    let infoLabel = UILabel()
   // MARK: view controller methods
+    
     
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -56,6 +88,13 @@ class ViewControllerEightLayer: UIViewController {
     status.addSubview(label)
 
     statusPosition = status.center
+    
+    infoLabel.frame = CGRect(x: 0.0, y: loginButton.center.y + 60.0, width: view.frame.size.width, height: 30)
+    infoLabel.backgroundColor = UIColor.clear
+    infoLabel.font = UIFont(name: "HelveticaNeue", size: 12.0)
+    infoLabel.textColor = UIColor.white
+    infoLabel.text = "Tap on a field and enter username and password"
+    view.insertSubview(infoLabel, belowSubview: loginButton)
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -93,15 +132,20 @@ class ViewControllerEightLayer: UIViewController {
     
     flyRight.toValue = view.bounds.size.width/2
     flyRight.duration = 0.5   //2  //0.5
-    
+    flyRight.delegate = self
+    flyRight.setValue("form", forKey: "name")
+    flyRight.setValue(heading.layer, forKey: "layer")
     heading.layer.add(flyRight, forKey: nil)
     
     flyRight.fillMode = kCAFillModeBoth
     flyRight.beginTime = CACurrentMediaTime() + 0.3    //2.0  //0.3
+    
+    flyRight.setValue(username.layer, forKey: "layer")
     username.layer.add(flyRight, forKey: nil)
     username.layer.position.x = view.bounds.width/2     //   组 1
     
     flyRight.beginTime = CACurrentMediaTime() + 0.4     //4.0  //0.4
+    flyRight.setValue(password.layer, forKey: "layer")
     password.layer.add(flyRight, forKey: nil)
     password.layer.position.x = view.bounds.width/2     //   组 1
     
@@ -112,6 +156,7 @@ class ViewControllerEightLayer: UIViewController {
     //   Debugging basic animations
    // username.layer.position.x -= view.bounds.width         //  组 2
   //  password.layer.position.x -= view.bounds.width         //  组 2
+    
     
    /* delay(5.0) {
         print("Where are the fields?")
@@ -168,6 +213,17 @@ class ViewControllerEightLayer: UIViewController {
     animateCloud(cloud2)
     animateCloud(cloud3)
     animateCloud(cloud4)
+    
+    let flyLeft = CABasicAnimation(keyPath: "position.x")
+    flyLeft.fromValue = infoLabel.layer.position.x + view.frame.size.width
+    flyLeft.toValue = infoLabel.layer.position.x
+    flyLeft.duration = 5.0
+    infoLabel.layer.add(flyLeft, forKey: "infoappear")
+    let fadeLabelIn = CABasicAnimation(keyPath: "opacity")
+    fadeLabelIn.fromValue = 0.2
+    fadeLabelIn.toValue = 1.0
+    fadeLabelIn.duration = 4.5
+    infoLabel.layer.add(fadeLabelIn, forKey: "fadein")
   }//  override func viewDidAppear(_ animated: Bool)
 
   func showMessage(index: Int) {
@@ -207,29 +263,38 @@ class ViewControllerEightLayer: UIViewController {
     )
   }
 
-  func resetForm() {
+  func resetForm(){
     UIView.transition(with: status, duration: 0.2, options: .transitionFlipFromTop,
       animations: {
         self.status.isHidden = true
         self.status.center = self.statusPosition
       },
-      completion: nil
-    )
+      completion: { _ in
+        let tintColor = UIColor(red: 0.63, green: 0.84, blue: 0.35, alpha: 1.0)
+        tintBackgroundColor(layer: self.loginButton.layer, toColor: tintColor)
+        roundCorners(layer: self.loginButton.layer, toRadius: 10.0)
+    })
 
     UIView.animate(withDuration: 0.2, delay: 0.0,
       animations: {
         self.spinner.center = CGPoint(x: -20.0, y: 16.0)
         self.spinner.alpha = 0.0
-        self.loginButton.backgroundColor = UIColor(red: 0.63, green: 0.84, blue: 0.35, alpha: 1.0)
+      //  self.loginButton.backgroundColor = UIColor(red: 0.63, green: 0.84, blue: 0.35, alpha: 1.0)
+        
         self.loginButton.bounds.size.width -= 80.0
         self.loginButton.center.y -= 60.0
       },
       completion: nil
     )
-  }
+    
+  }// func resetForm() {
+
+    
 
   // MARK: further methods
 
+    
+    
   @IBAction func login() {
     view.endEditing(true)
 
@@ -247,14 +312,21 @@ class ViewControllerEightLayer: UIViewController {
       initialSpringVelocity: 0.0,
       animations: {
         self.loginButton.center.y += 60.0
-        self.loginButton.backgroundColor = UIColor(red: 0.85, green: 0.83, blue: 0.45, alpha: 1.0)
+     //   self.loginButton.backgroundColor = UIColor(red: 0.85, green: 0.83, blue: 0.45, alpha: 1.0)
         self.spinner.center = CGPoint(x: 40.0, y: self.loginButton.frame.size.height/2)
         self.spinner.alpha = 1.0
       },
       completion: nil
     )
-  }
+    
+    let tincColor = UIColor(red: 0.85, green: 0.83, blue: 0.45, alpha: 1.0)
+    tintBackgroundColor(layer: loginButton.layer, toColor:
+        tincColor)
+    roundCorners(layer: loginButton.layer, toRadius: 25.0)
+  } //      @IBAction func login()
 
+    
+    
   func animateCloud(_ cloud: UIImageView) {
     let cloudSpeed = 60.0 / view.frame.size.width
     let duration = (view.frame.size.width - cloud.frame.origin.x) * cloudSpeed
@@ -267,9 +339,12 @@ class ViewControllerEightLayer: UIViewController {
         self.animateCloud(cloud)
       }
     )
-  }
+    
+  }//  func animateCloud(_ cloud: UIImageView)
 
-  
+    
+
+    
 
 }
 
@@ -306,8 +381,60 @@ func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 
     
     
+    
+
+}
+
+
+
+extension ViewControllerEightLayer{
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-
 }
+
+
+
+
+
+extension ViewControllerEightLayer: CAAnimationDelegate{
+    
+    
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        print("\n\nanimation did finish")
+        
+        guard let name = anim.value(forKey: "name") as? String else {
+            return
+        }
+        
+        if name == "form"{
+            let layer = anim.value(forKey: "layer") as? CALayer
+            anim.setValue(nil, forKey: "layer")
+            // 上两行， 保证了 一次性使用
+            
+            let pulse = CABasicAnimation(keyPath: "transform.scale")
+            pulse.fromValue = 1.25
+            pulse.toValue = 1.0
+            pulse.duration = 0.25
+            layer?.add(pulse, forKey: nil)
+        }
+/*
+         Note that you’re using optional chaining here with layer? — that means the add(_:forKey:) call will be skipped if there isn’t a layer stored in the animation. And since you set the layer to nil earlier, this pulse animation will only happen the first time the form field flies in from the right.
+         */
+    }
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
