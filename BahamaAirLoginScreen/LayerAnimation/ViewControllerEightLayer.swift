@@ -89,12 +89,27 @@ class ViewControllerEightLayer: UIViewController {
 
     statusPosition = status.center
     
-    infoLabel.frame = CGRect(x: 0.0, y: loginButton.center.y + 60.0, width: view.frame.size.width, height: 30)
+    infoLabel.frame = CGRect(x: view.bounds.size.width, y: loginButton.center.y + 60.0, width: view.frame.size.width, height: 30)
+    loginButton.layer.opacity = 0.0
+/*
+     DNG,   我有 修改
+     
+         infoLabel.frame = CGRect(x: 0, y: loginButton.center.y + 60.0, width: view.frame.size.width, height: 30)
+     
+     动画的加载入口 有区别，
+     从 window.rootViewController
+     或者 从 其他界面 push 出来
+     
+     */
+    
+    
     infoLabel.backgroundColor = UIColor.clear
     infoLabel.font = UIFont(name: "HelveticaNeue", size: 12.0)
+    infoLabel.textAlignment = .center
     infoLabel.textColor = UIColor.white
     infoLabel.text = "Tap on a field and enter username and password"
     view.insertSubview(infoLabel, belowSubview: loginButton)
+    
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -149,9 +164,6 @@ class ViewControllerEightLayer: UIViewController {
     password.layer.add(flyRight, forKey: nil)
     password.layer.position.x = view.bounds.width/2     //   组 1
     
-
-    loginButton.center.y += 30.0
-    loginButton.alpha = 0.0
     
     //   Debugging basic animations
    // username.layer.position.x -= view.bounds.width         //  组 2
@@ -185,6 +197,11 @@ class ViewControllerEightLayer: UIViewController {
     
   }//   override func viewWillAppear(_ animated: Bool)
 
+    
+    
+    
+    
+    
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
 /*
@@ -198,34 +215,57 @@ class ViewControllerEightLayer: UIViewController {
      
      */
     
-
-
-    UIView.animate(withDuration: 0.5, delay: 0.5, usingSpringWithDamping: 0.5,
-      initialSpringVelocity: 0.0,
-      animations: {
-        self.loginButton.center.y -= 30.0
-        self.loginButton.alpha = 1.0
-      },
-      completion: nil
-    )
-
-    animateCloud(cloud1)
-    animateCloud(cloud2)
-    animateCloud(cloud3)
-    animateCloud(cloud4)
+    
+    let groupAnimation = CAAnimationGroup()
+    groupAnimation.beginTime = CACurrentMediaTime() + 0.5
+    groupAnimation.duration = 0.5
+    groupAnimation.fillMode = kCAFillModeBackwards
+    
+    let scaleDown = CABasicAnimation(keyPath: "transform.scale")
+    scaleDown.fromValue = 3.5
+    scaleDown.toValue = 1.0
+    let rotate = CABasicAnimation(keyPath: "transform.rotation")
+    rotate.fromValue = .pi / 4.0
+    rotate.toValue = 0.0
+    let fade = CABasicAnimation(keyPath: "opacity")
+    fade.fromValue = 0.0
+    fade.toValue = 1.0
+    groupAnimation.animations = [scaleDown, rotate, fade]
+    loginButton.layer.add(groupAnimation, forKey: nil)
+    loginButton.layer.opacity = 1.0
+    animateCloud(layer: cloud1.layer)
+    animateCloud(layer: cloud2.layer)
+    animateCloud(layer: cloud3.layer)
+    animateCloud(layer: cloud4.layer)
     
     let flyLeft = CABasicAnimation(keyPath: "position.x")
-    flyLeft.fromValue = infoLabel.layer.position.x + view.frame.size.width
-    flyLeft.toValue = infoLabel.layer.position.x
+    flyLeft.fromValue = view.frame.size.width
+            /*          DNG,   我有 修改
+ flyLeft.fromValue = infoLabel.layer.position.x + view.frame.size.width
+ 
+     动画的加载入口 有区别，
+     从 window.rootViewController
+     或者 从 其他界面 push 出来
+ 
+ */
+    flyLeft.toValue = 0                             //       DNG,   我有 修改
     flyLeft.duration = 5.0
+  //  flyLeft.fillMode = kCAFillModeBoth         // DNG , 我加的
     infoLabel.layer.add(flyLeft, forKey: "infoappear")
+    infoLabel.frame.origin.x = 0
+    
     let fadeLabelIn = CABasicAnimation(keyPath: "opacity")
     fadeLabelIn.fromValue = 0.2
     fadeLabelIn.toValue = 1.0
     fadeLabelIn.duration = 4.5
     infoLabel.layer.add(fadeLabelIn, forKey: "fadein")
+    
+    username.delegate = self
+    password.delegate = self
   }//  override func viewDidAppear(_ animated: Bool)
 
+    
+    
   func showMessage(index: Int) {
     label.text = messages[index]
 
@@ -327,24 +367,20 @@ class ViewControllerEightLayer: UIViewController {
 
     
     
-  func animateCloud(_ cloud: UIImageView) {
-    let cloudSpeed = 60.0 / view.frame.size.width
-    let duration = (view.frame.size.width - cloud.frame.origin.x) * cloudSpeed
-    UIView.animate(withDuration: TimeInterval(duration), delay: 0.0, options: .curveLinear,
-      animations: {
-        cloud.frame.origin.x = self.view.frame.size.width
-      },
-      completion: {_ in
-        cloud.frame.origin.x = -cloud.frame.size.width
-        self.animateCloud(cloud)
-      }
-    )
+  func animateCloud(layer: CALayer) {
+    let cloudSpeed = 60.0 / TimeInterval(view.frame.size.width)
+    let duration: TimeInterval = TimeInterval(view.frame.size.width - layer.frame.origin.x) * cloudSpeed
+    let cloudMove = CABasicAnimation(keyPath: "position.x")
+    cloudMove.delegate = self
+    cloudMove.duration = duration
+    cloudMove.toValue = view.bounds.width + layer.bounds.width / 2
+    cloudMove.delegate = self
+    cloudMove.setValue("cloud", forKey: "name")
+    cloudMove.setValue(layer, forKey: "layer")
+    layer.add( cloudMove, forKey: nil)
     
   }//  func animateCloud(_ cloud: UIImageView)
 
-    
-
-    
 
 }
 
@@ -377,10 +413,19 @@ func textFieldShouldReturn(_ textField: UITextField) -> Bool {
           tabBarViewController.tabBar.isHidden = true
     }
     return true
-}
+}//     textFieldShouldReturn
 
     
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        guard let runningAnimations = infoLabel.layer.animationKeys() else {
+            return
+        }
+        print(runningAnimations)
+        infoLabel.layer.removeAnimation(forKey: "infoappear")
+     //   infoLabel.frame.origin.x = 0
+    }
     
 
 }
@@ -401,7 +446,7 @@ extension ViewControllerEightLayer{
 extension ViewControllerEightLayer: CAAnimationDelegate{
     
     
-    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool){
         print("\n\nanimation did finish")
         
         guard let name = anim.value(forKey: "name") as? String else {
@@ -418,18 +463,23 @@ extension ViewControllerEightLayer: CAAnimationDelegate{
             pulse.toValue = 1.0
             pulse.duration = 0.25
             layer?.add(pulse, forKey: nil)
+            /*
+             Note that you’re using optional chaining here with layer? — that means the add(_:forKey:) call will be skipped if there isn’t a layer stored in the animation. And since you set the layer to nil earlier, this pulse animation will only happen the first time the form field flies in from the right.
+             */
         }
-/*
-         Note that you’re using optional chaining here with layer? — that means the add(_:forKey:) call will be skipped if there isn’t a layer stored in the animation. And since you set the layer to nil earlier, this pulse animation will only happen the first time the form field flies in from the right.
-         */
-    }
+        else if name == "cloud"{
+            let layer = anim.value(forKey: "layer") as? CALayer
+            layer?.position.x =  -(layer?.bounds.size.width)!/2
+            delay(0.5, completion: {
+                self.animateCloud(layer: layer!)
+            })
+            
+        }
+
+    }// func animationDidStop(_ anim: CAAnimation, finished flag: Bool)
     
     
 }
-
-
-
-
 
 
 
