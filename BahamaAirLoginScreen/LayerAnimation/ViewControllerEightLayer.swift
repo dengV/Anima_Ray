@@ -404,12 +404,12 @@ func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     
     if textField.text == "1" {
         self.navigationController?.setNavigationBarHidden(false, animated: true )
-        navigationController?.setToolbarHidden(false, animated: true)
+
         tabBarViewController.tabBar.isHidden = false
     }
     else{
         self.navigationController?.setNavigationBarHidden(true, animated: true )
-        navigationController?.setToolbarHidden(true, animated: true)
+
           tabBarViewController.tabBar.isHidden = true
     }
     return true

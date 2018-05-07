@@ -18,11 +18,11 @@ class DisplayViewController: UIViewController {
         blueLayer.frame = CGRect(x: 50.0, y: 100.0, width: 100.0, height: 100.0)
         blueLayer.backgroundColor = UIColor.blue.cgColor
         
-        blueLayer.delegate = self
+        blueLayer.delegate = self       //  这行代码， 有毒
         blueLayer.contentsScale = UIScreen.main.scale
         view.layer.addSublayer(blueLayer)
         
-        blueLayer.display()
+       // blueLayer.display()
         //  force layer to redraw
         
     }
