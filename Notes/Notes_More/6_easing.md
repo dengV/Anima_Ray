@@ -39,3 +39,22 @@ CAMediaTimingFunction has a few pre-defined easing functions, which you can use 
 
 
 * • kCAMediaTimingFunctionEaseInEaseOut slows the animation in the beginning and at the end, but increases the pace during the middle section.
+
+
+
+
+
+
+<hr>
+
+<hr>
+
+<hr>
+
+
+
+
+> Note: Although it’s beyond the scope of this chapter, you can build your own custom easing function.
+
+
+Read up on the convenience initializer CAMediaTimingFunction(controlPoints: _: _: _:) in the Apple documentation or elsewhere on the web; this lets you define your easing function based on the control points of a cubic Bézier curve.

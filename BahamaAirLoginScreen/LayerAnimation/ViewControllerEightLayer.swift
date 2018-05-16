@@ -137,32 +137,60 @@ class ViewControllerEightLayer: UIViewController {
     // Comment it,
     // There’s no need to perform this action anymore since you can specify both the start and end values in your layer animation.
     
+    let form_groupAnimation = CAAnimationGroup()
     
+    let fadeAnimation = CABasicAnimation(keyPath: "opacity")
+    fadeAnimation.fromValue = 0.0
+    fadeAnimation.toValue = 1.0
+    
+    form_groupAnimation.duration = 0.5
+    form_groupAnimation.fillMode = kCAFillModeBoth
     let flyRight = CABasicAnimation(keyPath: "position.x")
     //  flyRight.fillMode = kCAFillModeBoth
+    
     //  放下面 好。 随用 随 设置
     
     // flyRight.isRemovedOnCompletion = false   //  组 2
     flyRight.fromValue = -view.bounds.size.width/2   //   组 1
     
     flyRight.toValue = view.bounds.size.width/2
-    flyRight.duration = 0.5   //2  //0.5
-    flyRight.delegate = self
-    flyRight.setValue("form", forKey: "name")
-    flyRight.setValue(heading.layer, forKey: "layer")
-    heading.layer.add(flyRight, forKey: nil)
+  //  flyRight.duration = 0.5   //2  //0.5  // 使用 group animation 的
+//    flyRight.delegate = self
+//    flyRight.setValue("form", forKey: "name")
+ //   flyRight.setValue(heading.layer, forKey: "layer")     // 这两行， key 不同
     
-    flyRight.fillMode = kCAFillModeBoth
-    flyRight.beginTime = CACurrentMediaTime() + 0.3    //2.0  //0.3
+    form_groupAnimation.delegate = self
+    form_groupAnimation.setValue("form", forKey: "name")
+    form_groupAnimation.setValue(heading.layer, forKey: "layer")
+    form_groupAnimation.animations = [flyRight, fadeAnimation]
+    form_groupAnimation.beginTime = CACurrentMediaTime()
+    heading.layer.add(form_groupAnimation, forKey: nil)
+//    heading.layer.add(flyRight, forKey: nil)
     
-    flyRight.setValue(username.layer, forKey: "layer")
-    username.layer.add(flyRight, forKey: nil)
-    username.layer.position.x = view.bounds.width/2     //   组 1
+ //   flyRight.fillMode = kCAFillModeBoth               //。// 使用 group animation 的
+ //   flyRight.beginTime = CACurrentMediaTime() + 0.3    //2.0  //0.3
     
-    flyRight.beginTime = CACurrentMediaTime() + 0.4     //4.0  //0.4
-    flyRight.setValue(password.layer, forKey: "layer")
-    password.layer.add(flyRight, forKey: nil)
-    password.layer.position.x = view.bounds.width/2     //   组 1
+ //   flyRight.setValue(username.layer, forKey: "layer")
+//    username.layer.add(flyRight, forKey: nil)
+ //   username.layer.position.x = view.bounds.width/2     //   组 1
+    form_groupAnimation.setValue(username.layer, forKey: "layer")
+    
+    form_groupAnimation.beginTime = CACurrentMediaTime() + 0.3
+    username.layer.add(form_groupAnimation, forKey: nil)
+    
+    
+    
+ //   flyRight.beginTime = CACurrentMediaTime() + 0.4     //4.0  //0.4
+ //   flyRight.setValue(password.layer, forKey: "layer")
+//    password.layer.add(flyRight, forKey: nil)
+//    password.layer.position.x = view.bounds.width/2     //   组 1
+    form_groupAnimation.setValue(password.layer, forKey: "layer")               // 感觉 这行， 直接把上面那行给 覆盖写入了， 不知道怎么 work 的
+    
+    
+    form_groupAnimation.beginTime = CACurrentMediaTime() + 0.6          // 0.4
+    password.layer.add(form_groupAnimation, forKey: nil)
+    
+    
     
     
     //   Debugging basic animations
@@ -219,6 +247,7 @@ class ViewControllerEightLayer: UIViewController {
     let groupAnimation = CAAnimationGroup()
     groupAnimation.beginTime = CACurrentMediaTime() + 0.5
     groupAnimation.duration = 0.5
+    groupAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
     groupAnimation.fillMode = kCAFillModeBackwards
     
     let scaleDown = CABasicAnimation(keyPath: "transform.scale")
@@ -239,6 +268,10 @@ class ViewControllerEightLayer: UIViewController {
     animateCloud(layer: cloud4.layer)
     
     let flyLeft = CABasicAnimation(keyPath: "position.x")
+    //  flyLeft.repeatCount = 4
+//    flyLeft.repeatCount = 2.3              //    2.5           //  这行代码， 牛逼
+    //  flyLeft.repeatDuration = 100.0
+//    flyLeft.autoreverses = true
     flyLeft.fromValue = view.frame.size.width
             /*          DNG,   我有 修改
  flyLeft.fromValue = infoLabel.layer.position.x + view.frame.size.width
@@ -250,9 +283,16 @@ class ViewControllerEightLayer: UIViewController {
  */
     flyLeft.toValue = 0                             //       DNG,   我有 修改
     flyLeft.duration = 5.0
+ //   flyLeft.speed = 2.0                     //  // 速度加倍了
   //  flyLeft.fillMode = kCAFillModeBoth         // DNG , 我加的
     infoLabel.layer.add(flyLeft, forKey: "infoappear")
     infoLabel.frame.origin.x = 0
+//    infoLabel.layer.speed = 2.0         // 4 倍速度了
+    
+    
+ //   view.layer.speed = 2.0      // 8 倍 速
+    //  Due to the multiplication factor of animations, the fade animation on the info label runs at 4x speed, and the animation moving the info label across the screen runs at 8x speed! Wheeeee!1
+    
     
     let fadeLabelIn = CABasicAnimation(keyPath: "opacity")
     fadeLabelIn.fromValue = 0.2
@@ -374,7 +414,7 @@ class ViewControllerEightLayer: UIViewController {
     cloudMove.delegate = self
     cloudMove.duration = duration
     cloudMove.toValue = view.bounds.width + layer.bounds.width / 2
-    cloudMove.delegate = self
+ 
     cloudMove.setValue("cloud", forKey: "name")
     cloudMove.setValue(layer, forKey: "layer")
     layer.add( cloudMove, forKey: nil)
@@ -453,13 +493,13 @@ extension ViewControllerEightLayer: CAAnimationDelegate{
             return
         }
         
-        if name == "form"{
+        if name == "form"{  //  form , Heading Label , two text Fields
             let layer = anim.value(forKey: "layer") as? CALayer
             anim.setValue(nil, forKey: "layer")
             // 上两行， 保证了 一次性使用
             
             let pulse = CABasicAnimation(keyPath: "transform.scale")
-            pulse.fromValue = 1.25
+            pulse.fromValue = 5         //1.25
             pulse.toValue = 1.0
             pulse.duration = 0.25
             layer?.add(pulse, forKey: nil)
